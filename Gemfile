@@ -22,9 +22,8 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'vcr'
   gem 'webmock'
 end
 
