@@ -1,1 +1,1 @@
-1.9.3@cloudview
+rvm use 1.9.3@cloudview --create
