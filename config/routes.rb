@@ -1,5 +1,3 @@
 Cloudview::Application.routes.draw do
-  controller :terminals do
-    get '/terminals' => 'terminals#index'
-  end
+  resources :terminals
 end
