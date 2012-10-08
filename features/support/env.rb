@@ -10,3 +10,13 @@ rescue NameError
 end
 
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+Capybara.javascript_driver = :webkit
+
+#if Capybara.current_driver == :selenium
+  require 'headless'
+
+  headless = Headless.new
+  headless.start
+#end
+

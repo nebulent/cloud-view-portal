@@ -18,4 +18,6 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'headless'
+  gem 'capybara-webkit'
 end
