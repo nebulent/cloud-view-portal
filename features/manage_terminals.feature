@@ -6,4 +6,4 @@ Feature: Manage terminals
 
   Scenario: Add terminal
     Given I add a terminal
-    Then I should see it in terminals list
+    Then The terminal should be in the list
