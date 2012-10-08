@@ -1,6 +1,6 @@
 
 def path_to (page)
-  "/#{page}"
+  send("#{page}_path")
 end
 
 Given /^I am on the (.+) page$/ do |page_name|
@@ -83,7 +83,7 @@ Then /^the "([^\"]*)" checkbox should not be checked$/ do |label|
   find_field(label).should_not be_checked
 end
 
-Then /^I should be on (.+)$/ do |page_name|
+Then /^I should be on (.+) page$/ do |page_name|
   current_path.should == path_to(page_name)
 end
 
