@@ -1,8 +1,8 @@
 Feature: Manage terminals
 
   Scenario: View terminals
-    Given I have some random terminals
-    Then I should see all terminals in the list
+    Given I have 3 terminals
+    Then All terminals should be in the list
 
   Scenario: Add terminal
     Given I add a terminal

@@ -89,3 +89,11 @@ end
 Then /^page should have (.+) message "([^\"]*)"$/ do |type, text|
   page.has_css?("p.#{type}", :text => text, :visible => true)
 end
+
+Given "I get a confirm dialog" do
+  page.driver.confirm_messages.size > 0
+end
+
+Given "I confirm the dialog" do
+  page.driver.accept_js_confirms!
+end
