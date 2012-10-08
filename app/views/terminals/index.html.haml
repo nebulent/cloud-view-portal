@@ -4,7 +4,8 @@ Terminals:
 %table
   %tbody
     - @terminals.each do |t|
-      %tr
+      %tr{:id => "terminal#{t.id}"}
         %td= t.name
         %td= t.uri
+        %td= button_to "Delete", terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?'
 

@@ -24,13 +24,31 @@ Then "The terminal should be in the list" do
 end
 
 Then "The terminal should not be in the list" do
+  page.driver.render "tmp/screenshot.png"
   steps %Q{
     Given I am on the terminals page
-    Then I should not see "#{@terminal_name}"
-     And I should not see "#{@terminal_uri}"
+    Then I should not see "#{@terminal_to_delete.name}"
+     And I should not see "#{@terminal_to_delete.uri}"
   }
 end
 
 When "I delete one of the terminals" do
+  @terminal_to_delete = @data_collection.sample
+  index = @terminal_to_delete.id
 
+  within("#terminal#{index}") do
+    steps %Q{
+      Given I press "Delete"
+        And I get a confirm dialog
+        And I confirm the dialog
+    }
+  end
+end
+
+Given "I get a confirm dialog" do
+  page.driver.confirm_messages.size > 0
+end
+
+Given "I confirm the dialog" do
+  page.driver.accept_js_confirms!
 end

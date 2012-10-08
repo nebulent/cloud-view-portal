@@ -8,13 +8,14 @@ Feature: Manage terminals
     Given I add a terminal
     Then The terminal should be in the list
 
+  @javascript
   Scenario: Delete a terminal
-    Given I have some terminals
+    Given I have 3 terminals
       And I am on the terminals page
     When I delete one of the terminals
     Then The terminal should not be in the list
 
   Scenario: Edit a terminal
     Given I have some terminals
-      And I edit on of them
-     Then The updated terminal should be in the list
+      And I edit one of them
+     Then The terminal should be in the list
