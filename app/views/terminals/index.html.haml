@@ -1,3 +1,10 @@
 = link_to "Add terminal", new_terminal_path
 
 Terminals:
+%table
+  %tbody
+    - @terminals.each do |t|
+      %tr
+        %td= t.name
+        %td= t.uri
+
