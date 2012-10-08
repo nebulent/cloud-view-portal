@@ -1,4 +1,3 @@
-
 def path_to (page)
   send("#{page}_path")
 end
