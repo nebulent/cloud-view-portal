@@ -16,6 +16,7 @@ Feature: Manage terminals
     Then The terminal should not be in the list
 
   Scenario: Edit a terminal
-    Given I have some terminals
-      And I edit one of them
+    Given I have 3 terminals
+      And I am on the terminals page
+      And I edit one of the terminals
      Then The terminal should be in the list
