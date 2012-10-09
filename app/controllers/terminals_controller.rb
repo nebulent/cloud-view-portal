@@ -16,6 +16,8 @@ class TerminalsController < ApplicationController
 
     if @terminal.save
       redirect_to terminals_path
+    else
+      render :new
     end
   end
 

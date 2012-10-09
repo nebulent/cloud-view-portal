@@ -1,5 +1,5 @@
 Given "I add a terminal" do
-  @terminal = FactoryGirl.create :terminal
+  @terminal = FactoryGirl.build :terminal
 
   steps %Q{
     Given I am on the terminals page
