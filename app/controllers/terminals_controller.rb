@@ -17,6 +17,7 @@ class TerminalsController < ApplicationController
     if @terminal.save
       redirect_to terminals_path
     else
+      flash.now[:error] = 'There was an error creating the terminal'
       render :new
     end
   end
@@ -24,7 +25,8 @@ class TerminalsController < ApplicationController
   def update
     @terminal = Terminal.find(params[:id])
 
-    if @terminal.update_attributes(params[:terminal])
+    unless @terminal.update_attributes(params[:terminal])
+      flash.now[:error] = 'There was a erro updating the terminal'
     end
 
     render :edit
