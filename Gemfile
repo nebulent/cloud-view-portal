@@ -20,4 +20,5 @@ group :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'headless'
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
+  gem 'shoulda-matchers'
 end
