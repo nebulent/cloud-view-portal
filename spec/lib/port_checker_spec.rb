@@ -1,4 +1,3 @@
-require 'socket'
 require_relative '../../lib/port_checker'
 
 describe PortChecker do

@@ -1,3 +1,5 @@
+require 'socket'
+
 class PortChecker
   class << self
 
