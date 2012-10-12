@@ -23,6 +23,13 @@ describe Terminal do
     terminal.port.should == rand_port
   end
 
+  it 'should be able to create a session' do
+    terminal = FactoryGirl.build :terminal
+    session = stub
+    terminal.stub(:remote_sessions).and_return(stub(:create => session))
+    terminal.create_session.should == session
+  end
+
   describe "validations" do
     before (:each) { FactoryGirl.create :terminal }
 
