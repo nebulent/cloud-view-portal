@@ -25,6 +25,10 @@ describe ProxyDaemon do
     PortChecker.should_receive(:rand_open).at_least(1)
   end
 
+  it 'should provide its host address' do
+    subject.host.should_not be_nil
+  end
+
   context 'when started' do
     before(:each) { subject.start! }
 

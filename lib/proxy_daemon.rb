@@ -11,11 +11,12 @@ class ProxyDaemon
     File.join(daemon_directory, EXECUTABLE)
   end
 
-  attr_reader :port, :target, :pid
+  attr_reader :port, :target, :pid, :host
 
   def initialize (terminal, session=nil)
     @terminal = terminal
     @target = "#{terminal.host}:#{terminal.port}"
+    @host = '127.0.0.1'
 
     if session
       attach(session)
