@@ -35,7 +35,6 @@ describe RemoteSessionsController do
       dummy_session.should_receive(:destroy)
       post :destroy, id: dummy_session.id
     end
-
   end
 
 end
