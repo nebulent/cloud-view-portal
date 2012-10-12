@@ -11,11 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011112413) do
+ActiveRecord::Schema.define(:version => 20121012073040) do
 
   create_table "remote_sessions", :force => true do |t|
     t.integer "terminal_id"
     t.integer "pid",         :null => false
+    t.string  "host"
+    t.integer "port"
   end
 
   create_table "terminals", :force => true do |t|
