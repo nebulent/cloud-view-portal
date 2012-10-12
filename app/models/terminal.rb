@@ -2,6 +2,8 @@ class Terminal < ActiveRecord::Base
 
   attr_accessible :name, :uri
 
+  has_many :remote_sessions
+
   validates_presence_of :name, :uri
   validates_uniqueness_of :name, :uri
 

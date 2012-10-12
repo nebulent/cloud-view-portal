@@ -31,4 +31,8 @@ describe Terminal do
     it { should validate_uniqueness_of :name }
     it { should validate_uniqueness_of :uri }
   end
+
+  describe "relationships" do
+    it { should have_many(:remote_sessions) }
+  end
 end
