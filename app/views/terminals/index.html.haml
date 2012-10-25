@@ -5,7 +5,7 @@ Terminals:
   %tbody
     - @terminals.each do |t|
       %tr{:id => "terminal#{t.id}"}
-        %td= t.name
+        %td= terminal_connect_link(t)
         %td= t.uri
         %td= link_to "Edit", edit_terminal_path(t)
         %td= button_to "Delete", terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?'
