@@ -17,7 +17,7 @@ class ProxyDaemon
   def initialize (terminal, session=nil)
     @terminal = terminal
     @target = "#{terminal.host}:#{terminal.port}"
-    @host = '192.168.88.250'
+    @host = '127.0.0.1'
 
     if session.nil?
       @port = PortChecker.rand_open
@@ -35,8 +35,10 @@ class ProxyDaemon
   def start!
     return @pid unless @pid.nil?
 
+    p "Starting daemon.."
     @port ||= PortChecker.rand_open # in case we attached and don't know the original port
     @pid = Process.spawn command
+    p "started with #{command}"
 
     while PortChecker.open?(@port) do
       sleep 0.5
