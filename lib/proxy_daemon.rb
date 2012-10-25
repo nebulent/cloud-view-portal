@@ -1,10 +1,11 @@
-require 'port_checker'
+require_relative 'port_checker'
 
 class ProxyDaemon
   EXECUTABLE  = 'websockify.py'
 
   def self.daemon_directory
-    File.join(Rails.root, '/vendor/daemons/vnc-rebind/')
+    root = Rails.root rescue File.absolute_path(File.join(File.dirname(__FILE__), '../'))
+    File.join(root, '/vendor/daemons/vnc-rebind/')
   end
 
   def self.daemon_executable
@@ -16,12 +17,12 @@ class ProxyDaemon
   def initialize (terminal, session=nil)
     @terminal = terminal
     @target = "#{terminal.host}:#{terminal.port}"
-    @host = '127.0.0.1'
+    @host = '192.168.88.250'
 
-    if session
-      attach(session)
-    else
+    if session.nil?
       @port = PortChecker.rand_open
+    else
+      attach(session)
     end
   end
 
@@ -37,7 +38,7 @@ class ProxyDaemon
     @port ||= PortChecker.rand_open # in case we attached and don't know the original port
     @pid = Process.spawn command
 
-    while PortChecker.open?(port) do
+    while PortChecker.open?(@port) do
       sleep 0.5
     end
 
@@ -46,12 +47,13 @@ class ProxyDaemon
   end
 
   def running?
-    @pid and process_running?(@pid) and (!PortChecker.open?(port) or @attached)
+    !@pid.nil? and process_running?(@pid) and (!PortChecker.open?(port) or @attached)
   end
 
   def stop!
     return unless @pid
     Process.kill 9, @pid
+    Process.wait
     @pid = nil
   end
 

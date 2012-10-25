@@ -1,14 +1,5 @@
 require_relative '../../lib/proxy_daemon'
 
-# For testing in isolation
-unless defined?(Rails)
-  class ::Rails
-    def self.root
-      File.absolute_path File.join(File.dirname(__FILE__), '/../../')
-    end
-  end
-end
-
 describe ProxyDaemon do
   let (:terminal) { stub(host: '127.0.0.1', port: 5900) }
   let (:subject) { ProxyDaemon.new(terminal) }
@@ -52,7 +43,7 @@ describe ProxyDaemon do
     it 'should be able to stop the process' do
       attached_proxy.stop!
       attached_proxy.should_not be_running
-      #subject.should_not be_running TODO: investigate why this fails
+      subject.should_not be_running #TODO: investigate why this fails
     end
 
     after(:each) { subject.stop! }
