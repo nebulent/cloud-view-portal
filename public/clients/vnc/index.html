@@ -144,7 +144,7 @@
             type: 'POST',
             success: function (data) {
               console.log(data)
-              connect(data.host, data.port)
+              connect(window.location.hostname, data.port)
               $(window).bind('beforeunload', function () { killSession(data.id) } )
             },
             error: function () {
