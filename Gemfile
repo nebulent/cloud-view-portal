@@ -12,6 +12,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails'
+  gem 'zurb-foundation'
 end
 
 group :test do
@@ -21,5 +23,5 @@ group :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'headless'
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
-  gem 'shoulda-matchers'
+  gem 'shoulda'
 end

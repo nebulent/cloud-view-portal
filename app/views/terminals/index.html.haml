@@ -1,12 +1,27 @@
-= link_to "Add terminal", new_terminal_path
+%table.nine.columns.centered
+  %thead
+    %th{:colspan => 2}
+      %h4 Terminals
+    %th{:colspan => 2}= link_to "Add terminal", new_terminal_path, :class => "secondary button"
+  - @terminals.each do |t|
+    %tr{:id => "terminal#{t.id}"}
+      %td{:width => '200px'}= terminal_connect_link(t)
+      %td= t.uri
+      %td{:width => '70px'}= link_to "Edit", edit_terminal_path(t), :class => "button"
+      %td{:width => '70px'}= button_to "Delete", terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button"
 
-Terminals:
-%table
-  %tbody
-    - @terminals.each do |t|
-      %tr{:id => "terminal#{t.id}"}
-        %td= terminal_connect_link(t)
-        %td= t.uri
-        %td= link_to "Edit", edit_terminal_path(t)
-        %td= button_to "Delete", terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?'
+:css
+  table{
+    border: 0px;
+  }
+  tbody {
+    padding: 10px;
+    border: 0px;
+  }
+  tr {
+    padding: 5px;
+  }
+  a.secondary.button {
+    width: 174px;
+  }
 
