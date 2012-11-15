@@ -5,6 +5,7 @@ gem 'haml-rails'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
+gem 'enumify'
 
 # Gems used only for assets and not required
 # in production environments by default.
