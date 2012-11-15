@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115132100) do
+ActiveRecord::Schema.define(:version => 20121115132524) do
 
   create_table "heads", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(:version => 20121115132100) do
   end
 
   create_table "terminals", :force => true do |t|
-    t.string "name", :null => false
-    t.string "uri",  :null => false
+    t.string  "name",            :null => false
+    t.string  "uri",             :null => false
+    t.integer "organization_id"
   end
 
 end
