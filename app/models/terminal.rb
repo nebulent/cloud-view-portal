@@ -5,6 +5,7 @@ class Terminal < ActiveRecord::Base
   belongs_to :organization
 
   has_many :remote_sessions
+  has_many :connections
 
   validates_presence_of :name, :uri
   validates_uniqueness_of :name, :uri
