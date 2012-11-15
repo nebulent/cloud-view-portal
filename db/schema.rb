@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115134714) do
+ActiveRecord::Schema.define(:version => 20121115135141) do
 
   create_table "connections", :force => true do |t|
     t.integer "terminal_id"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(:version => 20121115134714) do
   end
 
   create_table "remote_sessions", :force => true do |t|
-    t.integer "terminal_id"
-    t.integer "pid",         :null => false
+    t.integer "pid",           :null => false
     t.string  "host"
     t.integer "port"
+    t.integer "connection_id"
   end
 
   create_table "terminals", :force => true do |t|

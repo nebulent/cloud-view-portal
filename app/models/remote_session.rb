@@ -2,10 +2,10 @@ require 'proxy_daemon'
 
 class RemoteSession < ActiveRecord::Base
 
-  attr_accessible :pid, :terminal_id, :host, :port
+  attr_accessible :pid, :connection_id, :host, :port
 
-  belongs_to :terminal
-  validates_presence_of :terminal
+  belongs_to :connection
+  validates_presence_of :connection
 
   before_create  :launch_proxy
   before_destroy :stop_proxy
