@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115135141) do
+ActiveRecord::Schema.define(:version => 20121115140019) do
 
   create_table "connections", :force => true do |t|
     t.integer "terminal_id"
     t.string  "user"
     t.integer "port"
+    t.string  "protocol"
   end
 
   create_table "heads", :force => true do |t|
