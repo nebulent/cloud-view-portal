@@ -1,4 +1,4 @@
-class TerminalsController < ApplicationController
+class Organizations::TerminalsController < Organizations::ApplicationController
   def index
     @terminals = Terminal.all
   end

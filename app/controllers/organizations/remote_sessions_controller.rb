@@ -1,4 +1,4 @@
-class RemoteSessionsController < ApplicationController
+class Organizations::RemoteSessionsController < Organizations::ApplicationController
 
   def create
     @terminal = Terminal.find(params[:term_id])
