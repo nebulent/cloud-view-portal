@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 gem 'haml-rails'
 gem 'sqlite3'
 gem 'jquery-rails'
-gem 'daemon_controller'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
