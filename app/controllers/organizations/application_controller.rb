@@ -1,0 +1,3 @@
+class Organizations::ApplicationController
+
+end
