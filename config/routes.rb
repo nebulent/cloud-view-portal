@@ -1,6 +1,5 @@
 Cloudview::Application.routes.draw do
   devise_for :users
-
   devise_for :heads
 
   match '/pages/:action', :controller => "pages", :as => "pages"
