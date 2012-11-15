@@ -16,8 +16,11 @@ group :assets do
   gem 'zurb-foundation'
 end
 
-group :test do
+group :test, :development do
   gem 'rspec-rails'
+end
+
+group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem "factory_girl_rails", "~> 4.0"
