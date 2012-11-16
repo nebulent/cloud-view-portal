@@ -2,8 +2,10 @@
   .five.columns
     %h2 Users
   .one
-    = link_to 'create', new_organizations_user_path
+    = link_to 'create', new_organizations_user_registration_path
   .clear
+    - @organization.users.each do |user|
+      = user.email
 
 .six.columns
   .five.columns
