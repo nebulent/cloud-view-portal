@@ -1,0 +1,12 @@
+%h3 Allow a user to connect to a terminal
+
+#policyEditor
+  = form_tag organizations_policies_path, method: :post do
+    Allow user
+    = select_tag 'user', options_from_collection_for_select(@users, 'id', 'email')
+    to access terminal
+    = select_tag 'terminal', options_from_collection_for_select(@terminals, 'id', 'uri')
+    with connection
+    = select_tag 'connection'
+    %hr
+    = submit_tag 'Create policy', class: 'button small'

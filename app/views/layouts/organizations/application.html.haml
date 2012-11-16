@@ -14,8 +14,7 @@
       %section
         %ul.left
           %li= link_to 'Dashboard', organizations_dashboard_path('index')
-          %li
-            %a(href='#') Access policies
+          %li= link_to 'Access Policies', organizations_policies_path
         %ul.right
           %li= button_to "Logout", destroy_head_session_path, method: :delete
 

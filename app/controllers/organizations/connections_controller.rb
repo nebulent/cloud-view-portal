@@ -4,6 +4,11 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
 
   def index
     @connections = @terminal.connections
+
+    respond_to do |fmt|
+      fmt.html
+      fmt.json { render json: @connections.to_json }
+    end
   end
 
   def new
