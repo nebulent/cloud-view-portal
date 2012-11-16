@@ -15,7 +15,7 @@ class Organizations::TerminalsController < Organizations::ApplicationController
     @terminal = @organization.terminals.new(params[:terminal])
 
     if @terminal.save
-      redirect_to terminals_path
+      redirect_to organizations_terminals_path
     else
       flash.now[:error] = 'There was an error creating the terminal'
       render :new
@@ -26,7 +26,7 @@ class Organizations::TerminalsController < Organizations::ApplicationController
     @terminal = @organization.terminals.find(params[:id])
 
     unless @terminal.update_attributes(params[:terminal])
-      flash.now[:error] = 'There was a erro updating the terminal'
+      flash.now[:error] = 'There was a error updating the terminal'
     end
 
     render :edit
@@ -35,6 +35,6 @@ class Organizations::TerminalsController < Organizations::ApplicationController
   def destroy
     @terminal = @organization.terminals.find(params[:id])
     @terminal.destroy
-    redirect_to terminals_path
+    redirect_to organizations_terminals_path
   end
 end
