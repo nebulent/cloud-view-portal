@@ -4,8 +4,12 @@
   clear: both;
 }
 
-input {
+input, select {
   max-width: 250px;
+}
+
+h4 a {
+  text-decoration: underline;
 }
 
 .inline {
