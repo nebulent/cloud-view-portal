@@ -9,7 +9,10 @@ Cloudview::Application.routes.draw do
       registrations: 'organizations/users'
     }
 
-    resources :terminals
+    resources :terminals do
+      resources :connections
+    end
+
     resources :remote_sessions, only: [:create, :destroy]
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
