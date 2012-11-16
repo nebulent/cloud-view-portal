@@ -2,7 +2,15 @@
   %h2 Organizations
 
   .five.columns
-    = render 'organizations/heads/sign_in_form'
+    - if head_signed_in?
+      open control panel
+    - else
+      = render 'organizations/sessions/form'
+
+      %a{href: new_head_registration_path}
+        %h3(style='color: darkblue; text-decoration: underline')
+          Register new organization
+  .clear
 
 .six.columns#usersHalf
   %h2 Users

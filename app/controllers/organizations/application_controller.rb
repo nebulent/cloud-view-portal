@@ -1,3 +1,3 @@
-class Organizations::ApplicationController
+class Organizations::ApplicationController < ApplicationController
 
 end

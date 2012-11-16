@@ -2,13 +2,13 @@
   %thead
     %th{:colspan => 2}
       %h4 Terminals
-    %th{:colspan => 2}= link_to "Add terminal", new_terminal_path, :class => "secondary button"
+    %th{:colspan => 2}= link_to "Add terminal", new_organizations_terminal_path, :class => "secondary button"
   - @terminals.each do |t|
     %tr{:id => "terminal#{t.id}"}
       %td{:width => '200px'}= terminal_connect_link(t)
       %td= t.uri
-      %td{:width => '70px'}= link_to "Edit", edit_terminal_path(t), :class => "button"
-      %td{:width => '70px'}= button_to "Delete", terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button"
+      %td{:width => '70px'}= link_to "Edit", edit_organizations_terminal_path(t), :class => "button"
+      %td{:width => '70px'}= button_to "Delete", organizations_terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button"
 
 :css
   table{
