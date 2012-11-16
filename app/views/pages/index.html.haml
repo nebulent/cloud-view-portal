@@ -3,7 +3,7 @@
 
   .five.columns
     - if head_signed_in?
-      = link_to 'Open dashboard', organizations_dashboard_path('index')
+      = link_to 'Go to dashboard', organizations_dashboard_path('index')
     - else
       = render 'organizations/sessions/form'
 
@@ -14,3 +14,9 @@
 
 .six.columns#usersHalf
   %h2 Users
+
+  .five.columns
+    - if user_signed_in?
+      = link_to 'Go to dashboard', users_dashboard_path('index')
+    - else
+      = render 'users/sessions/form'
