@@ -1,3 +1,20 @@
 %h4 User access policy
 
-= link_to 'Add access rule', new_organizations_policy_path, :class => 'button'
+= link_to 'Add access rule', new_organizations_policy_path, :class => 'button small'
+
+%table.twelve
+  %thead
+    %tr
+      %th User
+      %th Terminal
+      %th Connection
+      %th
+  %tbody
+    - @users.each do |user|
+      - user.connections.each do |conn|
+        %tr
+          %td= user.email
+          %td= conn.terminal.uri
+          %td= conn
+          %td= delete_button "Delete", organizations_policy_path(id: conn.id, user_id: user.id)
+

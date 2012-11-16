@@ -1,7 +1,7 @@
 class Organizations::PoliciesController < Organizations::ApplicationController
 
-  def all
-    #
+  def index
+    @users = @organization.users
   end
 
   def new
@@ -17,15 +17,25 @@ class Organizations::PoliciesController < Organizations::ApplicationController
     if terminal and connection and user
       user.connections << connection
       flash[:success] = 'The policy was successfully created'
-      redirect_to new_organizations_policy_path
     else
       flash[:error] = 'Invalid policy request'
-      redirect_to new_organizations_policy_path
     end
+
+    redirect_to new_organizations_policy_path
   end
 
   def destroy
-    #
+    connection = Connection.find(params[:id])
+    user = User.find(params[:user_id])
+
+    if connection and user
+      user.connections.delete(connection)
+      flash[:success] = 'The rule has been successfully removed'
+    else
+      flash[:error] = 'failed to remove the rule'
+    end
+
+    redirect_to organizations_policies_path
   end
 
 end

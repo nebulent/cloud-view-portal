@@ -7,4 +7,8 @@ class Connection < ActiveRecord::Base
 
   attr_accessible :user, :protocol, :port
 
+  def to_s
+    "protocol: #{protocol} user: #{user} port:#{port}"
+  end
+
 end
