@@ -4,4 +4,6 @@ class Organization < ActiveRecord::Base
   has_many :users
   has_many :terminals
 
+  attr_accessible :name
+
 end
