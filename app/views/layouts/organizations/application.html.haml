@@ -7,17 +7,17 @@
     = csrf_meta_tags
 
   %body
-    .header
-      .eleven.columns
-        %a(href= '/')
-          %h2=@organization.name
-      .one.column
-        %br
-        proto v1
-      .clear
+    %nav.top-bar
+      %ul
+        %li.name
+          %h1= @organization.name
+      %section
+        %ul.left
+          %li
+            %a(href='#') Access policies
+        %ul.right
+          %li= button_to "Logout", destroy_head_session_path, method: :delete
 
-    %hr
     = render 'flash_messages'
-
     = yield
 
