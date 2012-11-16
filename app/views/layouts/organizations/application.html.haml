@@ -13,6 +13,7 @@
           %h1= @organization.name
       %section
         %ul.left
+          %li= link_to 'Dashboard', organizations_dashboard_path('index')
           %li
             %a(href='#') Access policies
         %ul.right

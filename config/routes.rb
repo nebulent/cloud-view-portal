@@ -9,6 +9,8 @@ Cloudview::Application.routes.draw do
       registrations: 'organizations/users'
     }
 
+    resources :policies, only: [:index, :new, :create, :destroy]
+
     resources :terminals do
       resources :connections
     end
