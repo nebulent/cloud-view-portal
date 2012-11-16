@@ -1,18 +1,18 @@
 class Organizations::TerminalsController < Organizations::ApplicationController
   def index
-    @terminals = Terminal.all
+    @terminals = @organization.terminals.all
   end
 
   def new
-    @terminal = Terminal.new
+    @terminal = @organization.terminals.new
   end
 
   def edit
-    @terminal = Terminal.find(params[:id])
+    @terminal = @organization.terminals.find(params[:id])
   end
 
   def create
-    @terminal = Terminal.new(params[:terminal])
+    @terminal = @organization.terminals.new(params[:terminal])
 
     if @terminal.save
       redirect_to terminals_path
@@ -23,7 +23,7 @@ class Organizations::TerminalsController < Organizations::ApplicationController
   end
 
   def update
-    @terminal = Terminal.find(params[:id])
+    @terminal = @organization.terminals.find(params[:id])
 
     unless @terminal.update_attributes(params[:terminal])
       flash.now[:error] = 'There was a erro updating the terminal'
@@ -33,7 +33,7 @@ class Organizations::TerminalsController < Organizations::ApplicationController
   end
 
   def destroy
-    @terminal = Terminal.find(params[:id])
+    @terminal = @organization.terminals.find(params[:id])
     @terminal.destroy
     redirect_to terminals_path
   end
