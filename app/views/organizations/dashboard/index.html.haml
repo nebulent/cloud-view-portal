@@ -1,15 +1,31 @@
 .six.columns
-  .five.columns
-    %h2 Users
-  .one
-    = link_to 'create', new_organizations_user_registration_path
+  .eleven.columns
+    %h3 Users
+  .one.column
+    = link_to 'create', new_organizations_user_registration_path, class: 'create_link tiny button'
   .clear
-    - @organization.users.each do |user|
-      = user.email
+  %table.twelve
+    %thead
+      %tr
+        %th email
+    %tbody
+      - @organization.users.each do |user|
+        %tr
+          %td= user.email
 
 .six.columns
-  .five.columns
-    %h2 Terminals
-  .one
-    = link_to 'create', new_organizations_terminal_path
+  .eleven.columns
+    %h3 Terminals
+  .one.column
+    = link_to 'create', new_organizations_terminal_path, class: 'create_link tiny button'
   .clear
+  %table.twelve
+    %thead
+      %tr
+        %th name
+        %th connections
+    %tbody
+      - @organization.terminals.each do |terminal|
+        %tr
+          %td= terminal.name
+          %td ololo
