@@ -5,8 +5,10 @@ Cloudview::Application.routes.draw do
   }
 
   namespace :organizations do
-    resources :terminals
+    resources :terminals, :users
     resources :remote_sessions, only: [:create, :destroy]
+
+    match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 
   match '/pages/:action', controller: "pages", as: "pages"
