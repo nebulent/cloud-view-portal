@@ -7,6 +7,8 @@ Cloudview::Application.routes.draw do
   }
 
   namespace :users do
+    resources :connections, only: [:show]
+
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 
