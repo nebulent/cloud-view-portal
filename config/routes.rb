@@ -1,13 +1,16 @@
 Cloudview::Application.routes.draw do
-  devise_for :users
+  devise_for :users, only: [:sessions, :passwords]
   devise_for :heads, path: 'organization', controllers: {
     registrations: 'organizations/registrations'
   }
 
   namespace :organizations do
-    resources :terminals, :users
-    resources :remote_sessions, only: [:create, :destroy]
+    devise_for :users, only: [:registrations], controllers: {
+      registrations: 'organizations/users'
+    }
 
+    resources :terminals
+    resources :remote_sessions, only: [:create, :destroy]
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 
