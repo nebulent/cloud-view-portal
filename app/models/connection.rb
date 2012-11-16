@@ -5,7 +5,7 @@ class Connection < ActiveRecord::Base
   has_many :remote_sessions
   has_and_belongs_to_many :users, join_table: :users_connections
 
-  attr_accessible :user, :protocol, :port
+  attr_accessible :user, :protocol, :port, :credentials
 
   def to_s
     "protocol: #{protocol} user: #{user} port:#{port}"
