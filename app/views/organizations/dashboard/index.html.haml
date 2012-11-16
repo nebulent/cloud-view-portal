@@ -28,4 +28,4 @@
       - @organization.terminals.each do |terminal|
         %tr
           %td= terminal.name
-          %td ololo
+          %td= link_to 'view', organizations_terminal_connections_path(:terminal_id => terminal.id)
