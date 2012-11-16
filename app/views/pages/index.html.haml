@@ -3,7 +3,7 @@
 
   .five.columns
     - if head_signed_in?
-      open control panel
+      = link_to 'Open dashboard', organizations_dashboard_path('index')
     - else
       = render 'organizations/sessions/form'
 
