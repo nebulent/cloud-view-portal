@@ -1,40 +1,25 @@
-class Organizations::@organizations.users.Controller < Organizations::ApplicationController
-  def index
-    @users = @organization.users.all
-  end
-
-  def new
-    @user = @organization.users.new
-  end
-
-  def edit
-    @user = @organization.users.find(params[:id])
-  end
+class Organizations::UsersController < Devise::RegistrationsController
 
   def create
-    @user = @organization.users.new(params[:user])
+    build_resource(params[:user])
 
-    if @user.save
-      redirect_to users_path
+    if resource.save
+      flash.now[:success] = 'The user was successfully added'
+      return redirect_to after_sign_up_path_for(resource)
     else
-      flash.now[:error] = 'There was an error creating the user'
-      render :new
+      render 'new'
     end
   end
 
-  def update
-    @user = @organization.users.find(params[:id])
-
-    unless @user.update_attributes(params[:user])
-      flash.now[:error] = 'There was a erro updating the user'
-    end
-
-    render :edit
+  def after_sign_up_path_for (resource)
+    organizations_dashboard_path('index')
   end
 
-  def destroy
-    @user = @organizations.users.find(params[:id])
-    @user.destroy
-    redirect_to users_path
+  private
+
+  def build_resource(hash=nil)
+    @organization ||= current_head.organization
+    hash ||= resource_params || {}
+    self.resource = @organization.users.new(hash)
   end
 end
