@@ -11,4 +11,14 @@ class Connection < ActiveRecord::Base
     "protocol: #{protocol} user: #{user} port:#{port}"
   end
 
+  def host
+    terminal.uri
+  end
+
+  def create_session
+    remote_sessions.create({
+      port: port
+    })
+  end
+
 end

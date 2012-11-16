@@ -85,8 +85,9 @@
             }
         }
 
-        var connect = function (host, port) {
-            var host, port, password, path, token;
+        var connect = function (host, port, password) {
+            console.log('connect', host, port)
+            var host, port, path, token;
 
             $D('sendCtrlAltDelButton').style.display = "inline";
             $D('sendCtrlAltDelButton').onclick = sendCtrlAltDel;
@@ -104,7 +105,7 @@
                 WebUtil.createCookie('token', token, 1)
             }
 
-            password = prompt('enter password')//= WebUtil.getQueryVar('password', '');
+            //password = prompt('enter password')//= WebUtil.getQueryVar('password', '');
             path = WebUtil.getQueryVar('path', 'websockify');
 
             if ((!host) || (!port)) {
@@ -130,21 +131,22 @@
           $.ajax({
             async: false,
             type: 'DELETE',
-            url: '/remote_sessions/' + id,
+            url: '/users/remote_sessions/' + id,
             success: function () { console.log('killed the session') },
             error: function () { console.log('error killing session') }
           })
         }
 
         window.onload = function () {
-         var terminalId = WebUtil.getQueryVar('term_id', '');
+         var terminalId = WebUtil.getQueryVar('sid', '');
+         var userId = WebUtil.getQueryVar('uid','');
 
          $.ajax({
-            url: '/remote_sessions?term_id=' + terminalId,
+            url: '/users/remote_sessions?uid=' + userId + '&' + 'sid=' + terminalId,
             type: 'POST',
             success: function (data) {
               console.log(data)
-              connect(window.location.hostname, data.port)
+              connect(window.location.hostname, data.port, data.pass)
               $(window).bind('beforeunload', function () { killSession(data.id) } )
             },
             error: function () {

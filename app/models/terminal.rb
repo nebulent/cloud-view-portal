@@ -13,20 +13,8 @@ class Terminal < ActiveRecord::Base
     connections.any?
   end
 
-  def create_session
-    remote_sessions.create
-  end
-
-  def username
-    URI(uri).user
-  end
-
   def host
     URI(uri).host
-  end
-
-  def port
-    URI(uri).port
   end
 
 end

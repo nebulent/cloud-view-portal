@@ -14,9 +14,10 @@ class ProxyDaemon
 
   attr_reader :port, :target, :pid, :host
 
-  def initialize (terminal, session=nil)
-    @terminal = terminal
-    @target = "#{terminal.host}:#{terminal.port}"
+  def initialize (connection, session=nil)
+    @connection = connection
+    @terminal = connection.terminal
+    @target = "#{connection.host}:#{connection.port}"
     @host = '127.0.0.1'
 
     if session.nil?

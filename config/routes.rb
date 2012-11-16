@@ -8,6 +8,7 @@ Cloudview::Application.routes.draw do
 
   namespace :users do
     resources :connections, only: [:show]
+    resources :remote_sessions, only: [:create, :destroy]
 
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
@@ -23,7 +24,6 @@ Cloudview::Application.routes.draw do
       resources :connections
     end
 
-    resources :remote_sessions, only: [:create, :destroy]
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 

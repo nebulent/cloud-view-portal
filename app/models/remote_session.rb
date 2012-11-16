@@ -10,8 +10,10 @@ class RemoteSession < ActiveRecord::Base
   before_create  :launch_proxy
   before_destroy :stop_proxy
 
+  private
+
   def launch_proxy
-    daemon = ProxyDaemon.new(terminal)
+    daemon = ProxyDaemon.new(connection)
     self.pid = daemon.start!
     self.host = daemon.host
     self.port = daemon.port
