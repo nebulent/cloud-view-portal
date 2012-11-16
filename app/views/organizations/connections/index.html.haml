@@ -1,0 +1,19 @@
+- if @terminal.has_connections?
+  %h4 Connections for #{@terminal.uri}
+
+  %table.twelve
+    %thead
+      %tr
+        %th Username
+        %th Port
+        %th Protocol
+    %tbody
+      - @terminal.connections.each do |connection|
+        %tr
+          %td= connection.user
+          %td= connection.port
+          %td= connection.protocol
+- else
+  %h4
+    This terminal has no connections yet.
+    = link_to 'Create one', new_organizations_terminal_connection_path(:terminal_id => @terminal.id)
