@@ -7,6 +7,8 @@ class Connection < ActiveRecord::Base
 
   attr_accessible :user, :protocol, :port, :credentials
 
+  validates_presence_of :credentials, :port
+
   def to_s
     "protocol: #{protocol} user: #{user} port:#{port}"
   end

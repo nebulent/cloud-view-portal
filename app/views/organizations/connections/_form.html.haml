@@ -4,5 +4,7 @@
   = f.label :protocol
   = f.select :protocol, @protocols.map {|p| [p, p]}
   = f.label :port
-  = f.number_field :port
+  = f.number_field :portol
+  = f.label :password
+  = f.password_field :credentials
   = f.submit 'Create'
