@@ -1,6 +1,6 @@
 class Organizations::ConnectionsController < Organizations::ApplicationController
   before_filter :fetch_terminal
-  before_filter :get_protocols, :only => [:edit, :new]
+  before_filter :get_protocols, :only => [:edit, :new, :create]
 
   def index
     @connections = @terminal.connections
@@ -22,7 +22,7 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
       flash.now[:success] = 'The connection has been successfully created'
       redirect_to organizations_terminal_connections_path(@terminal.id)
     else
-      render 'edit'
+      render 'new'
     end
   end
 
@@ -35,7 +35,15 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
   end
 
   def destroy
-    #
+    @connection = @terminal.connections.find(params[:id])
+
+    if @connection.destroy
+      flash[:success] = 'The connection was destroyed'
+    else
+      flash[:error] = 'There was a error destroying the connection'
+    end
+
+    redirect_to :back
   end
 
   private
