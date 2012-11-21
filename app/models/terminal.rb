@@ -7,7 +7,6 @@ class Terminal < ActiveRecord::Base
   has_many :connections
 
   validates_presence_of :name, :uri
-  validates_uniqueness_of :name, :uri
 
   def has_connections?
     connections.any?
