@@ -7,13 +7,15 @@
         %th Username
         %th Port
         %th Protocol
+        %th
     %tbody
       - @terminal.connections.each do |connection|
         %tr
           %td= connection.user
           %td= connection.port
           %td= connection.protocol
+          %td= delete_button 'Delete', organizations_terminal_connection_path(:terminal_id => @terminal.id, :id => connection.id)
 - else
   %h4
     This terminal has no connections yet.
-    = link_to 'Create one', new_organizations_terminal_connection_path(:terminal_id => @terminal.id)
+= link_to 'Create connection', new_organizations_terminal_connection_path(:terminal_id => @terminal.id), class: 'small button'
