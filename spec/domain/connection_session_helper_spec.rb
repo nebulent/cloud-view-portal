@@ -24,16 +24,12 @@ describe ConnectionSessionHelper do
     end
 
     it 'should create a remote_session' do
-      connection.should_receive :create_session
-      subject.create_session
-    end
-
-    it 'should update remote_session with daemon data' do
-      session.should_receive(:update_attributes, with: {
+      connection.should_receive(:create_session, with: {
         pid: daemon.start!,
         host: daemon.host,
         port: daemon.port
       })
+
       subject.create_session
     end
 
