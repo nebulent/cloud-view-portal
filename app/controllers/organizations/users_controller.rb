@@ -17,7 +17,7 @@ class Organizations::UsersController < Devise::RegistrationsController
 
   private
 
-  def build_resource(hash=nil)
+  def build_resource (hash=nil)
     @organization ||= current_head.organization
     hash ||= resource_params || {}
     self.resource = @organization.users.new(hash)
