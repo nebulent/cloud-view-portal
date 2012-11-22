@@ -1,21 +1,27 @@
 class ConnectionSessionHelper
 
-  def initialize (connection)
+  def initialize (connection, session=nil)
     @connection = connection
-    @session = connection.create_session
+    @session = session
   end
 
   def create_session
-    daemon = ProxyDaemon.new(connection)
+    daemon = ProxyDaemon.new(@connection)
+    @session ||= @connection.create_session
+
     @session.update_attributes({
       pid: daemon.start!,
       host: daemon.host,
       port: daemon.port
     })
+
+    @session
   end
 
   def destroy_session
-    ProxyDaemon.new(terminal, @session).stop!
+    return false if @session.nil?
+    ProxyDaemon.new(@connection, @session).stop!
+    @session.destroy
   end
 
 end
