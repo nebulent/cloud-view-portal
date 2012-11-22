@@ -1,15 +1,18 @@
 require_relative '../../lib/proxy_daemon'
 
 describe ProxyDaemon do
-  let (:terminal) { stub(host: '127.0.0.1', port: 5900) }
-  let (:subject) { ProxyDaemon.new(terminal) }
+  let (:terminal) { stub(host: '127.0.0.1') }
+  let (:connection) { stub(terminal: terminal,
+                           host: terminal.host,
+                           port: 5900) }
+  let (:subject) { ProxyDaemon.new(connection) }
 
   it 'should have an existing executable' do
     File.exist?(ProxyDaemon.daemon_executable).should == true
   end
 
   it 'should have terminal address as target' do
-    subject.target.should == "#{terminal.host}:#{terminal.port}"
+    subject.target.should == "#{connection.host}:#{connection.port}"
   end
 
   it 'should bind to a random open port' do
@@ -34,7 +37,7 @@ describe ProxyDaemon do
   context 'when attached' do
     before(:each) { subject.start! }
 
-    let (:attached_proxy) { ProxyDaemon.new(terminal, stub(:pid => subject.pid)) }
+    let (:attached_proxy) { ProxyDaemon.new(connection, stub(:pid => subject.pid)) }
 
     it 'should report running status' do
       attached_proxy.should be_running

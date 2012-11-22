@@ -36,10 +36,10 @@ class ProxyDaemon
   def start!
     return @pid unless @pid.nil?
 
-    p "Starting daemon.."
+    #p "Starting daemon.."
     @port ||= PortChecker.rand_open # in case we attached and don't know the original port
     @pid = Process.spawn command
-    p "started with #{command}"
+    #p "started with #{command}"
 
     while PortChecker.open?(@port) do
       sleep 0.5
