@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RemoteSessionsController do
+describe Users::RemoteSessionsController do
 
   let (:session_attrs) { { host: '127.0.0.1', port: 5300, id: rand(100)} }
   let (:dummy_session) { stub(session_attrs) }
