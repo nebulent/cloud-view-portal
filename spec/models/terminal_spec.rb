@@ -5,33 +5,8 @@ describe Terminal do
     FactoryGirl.build(:terminal).should be_valid
   end
 
-  it 'should get the the username from uri' do
-    rand_user = SecureRandom.hex(5)
-    terminal = FactoryGirl.build :terminal, uri: "vnc://#{rand_user}@host.com"
-    terminal.username.should == rand_user
-  end
-
-  it 'should get the host from the uri' do
-    rand_host = SecureRandom.hex(6) + '.com'
-    terminal = FactoryGirl.build :terminal, uri: "vnc://jora@#{rand_host}:7777"
-    terminal.host.should == rand_host
-  end
-
-  it 'should get the port from the uri' do
-    rand_port = (rand * 10000).to_i
-    terminal = FactoryGirl.build :terminal, uri: "vnc://jora@host.com:#{rand_port}"
-    terminal.port.should == rand_port
-  end
-
-  it 'should be able to create a session' do
-    terminal = FactoryGirl.build :terminal
-    session = stub
-    terminal.stub(:remote_sessions).and_return(stub(:create => session))
-    terminal.create_session.should == session
-  end
-
   describe "validations" do
-    before (:each) { FactoryGirl.create :terminal }
+    let (:subject) { FactoryGirl.create :terminal }
 
     it { should validate_presence_of :name }
     it { should validate_presence_of :uri }
@@ -40,6 +15,7 @@ describe Terminal do
   end
 
   describe "relationships" do
-    it { should have_many(:remote_sessions) }
+    it { should belong_to(:organization) }
+    it { should have_many(:connections) }
   end
 end

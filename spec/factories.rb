@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :terminal do
     name { SecureRandom.hex(10) }
-    uri { "#{SecureRandom.hex(5)}@#{SecureRandom.hex(8)}" }
+    uri { SecureRandom.hex(8) }
   end
 
   factory :connection do
