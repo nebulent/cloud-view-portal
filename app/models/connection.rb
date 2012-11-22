@@ -17,10 +17,10 @@ class Connection < ActiveRecord::Base
     terminal.uri
   end
 
-  def create_session
+  def create_session (params)
     remote_sessions.create({
       port: port
-    })
+    }.merge(params))
   end
 
 end
