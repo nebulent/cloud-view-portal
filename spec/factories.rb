@@ -15,4 +15,9 @@ FactoryGirl.define do
   factory :remote_session do
     association :connection
   end
+
+  factory :head do
+    sequence(:email) {|n| "head#{n}@test.com " }
+    association :organization
+  end
 end
