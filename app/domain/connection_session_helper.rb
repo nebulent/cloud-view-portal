@@ -1,3 +1,5 @@
+require 'proxy_daemon'
+
 class ConnectionSessionHelper
 
   def initialize (connection, session=nil)
@@ -7,9 +9,7 @@ class ConnectionSessionHelper
 
   def create_session
     daemon = ProxyDaemon.new(@connection)
-    @session ||= @connection.create_session
-
-    @session.update_attributes({
+    @session ||= @connection.create_session({
       pid: daemon.start!,
       host: daemon.host,
       port: daemon.port
