@@ -22,4 +22,5 @@ class Organizations::UsersController < Devise::RegistrationsController
     hash ||= resource_params || {}
     self.resource = @organization.users.new(hash)
   end
+
 end

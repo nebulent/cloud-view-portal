@@ -1,4 +1,5 @@
 class Organizations::ApplicationController < ApplicationController
+
   before_filter :authenticate_head!
   before_filter :fetch_organization
 

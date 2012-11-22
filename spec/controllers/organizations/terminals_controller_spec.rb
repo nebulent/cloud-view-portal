@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe TerminalsController do
+describe Organizations::TerminalsController do
 
   describe 'get #index' do
     it "should have a list of all terminals" do
