@@ -4,7 +4,8 @@ class Users::RemoteSessionsController < Users::ApplicationController
   def create
     user = User.find(params[:uid])
     connection = user.connections.find(params[:sid])
-    session  = connection.create_session
+    helper = ConnectionSessionHelper.new(connection)
+    session  = helper.create_session
 
     render json: { id: session.id,
                    host: connection.host,
@@ -14,7 +15,8 @@ class Users::RemoteSessionsController < Users::ApplicationController
 
   def destroy
     session = RemoteSession.find(params[:id])
-    render json: { success: session.destroy }
+    helper = ConnectionSessionHelper.new(session.connection, session)
+    render json: { success: helper.destroy_session }
   end
 
 end
