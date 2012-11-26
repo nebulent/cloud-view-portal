@@ -54,7 +54,7 @@ module Cloudview
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
-    config.ssh_relay_host = 'http://localhost:8001'
+    config.ssh_relay_host = 'http://192.168.88.122:8001'
 
     # Enable the asset pipeline
     config.assets.enabled = true
