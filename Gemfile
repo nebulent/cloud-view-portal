@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'enumify'
 gem 'websocket-rails'
+gem 'posix-spawn'
 
 # Gems used only for assets and not required
 # in production environments by default.
