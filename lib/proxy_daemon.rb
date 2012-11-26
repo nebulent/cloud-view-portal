@@ -1,7 +1,12 @@
 require_relative 'port_checker'
+require 'posix/spawn' unless defined?(POSIX)
+require 'sys/proctable' unless defined?(Sys::ProcTable)
 
 class ProxyDaemon
-  EXECUTABLE  = 'websockify.py'
+  include POSIX::Spawn
+  include Sys
+
+  EXECUTABLE  = 'websockify'
 
   def self.daemon_directory
     root = Rails.root rescue File.absolute_path(File.join(File.dirname(__FILE__), '../'))
@@ -36,10 +41,9 @@ class ProxyDaemon
   def start!
     return @pid unless @pid.nil?
 
-    #p "Starting daemon.."
     @port ||= PortChecker.rand_open # in case we attached and don't know the original port
-    @pid = Process.spawn command
-    #p "started with #{command}"
+    @pid, _, _, _ = popen4 command
+    Process.detach(@pid)
 
     while PortChecker.open?(@port) do
       sleep 0.5
@@ -50,23 +54,43 @@ class ProxyDaemon
   end
 
   def running?
-    !@pid.nil? and process_running?(@pid) and (!PortChecker.open?(port) or @attached)
+    process_running?(@pid) and (!PortChecker.open?(port) or @attached)
   end
 
   def stop!
-    return unless @pid
-    Process.kill 9, @pid
-    Process.wait
+    return if @pid == nil
+
+    if not process_running?(@pid)
+      @pid = nil
+      return
+    end
+
+    kill_process_and_children @pid
     @pid = nil
   end
 
   def command
-    "#{self.class.daemon_executable} 0.0.0.0:#{@port} #{@target} > /dev/null 2>&1"
+    "#{self.class.daemon_executable} 0.0.0.0:#{@port} #{@target}"
   end
 
   private
 
+  def kill_process_and_children (pid)
+    to_kill = [pid]
+
+    ProcTable.ps do |proc|
+      to_kill << proc.pid if to_kill.include?(proc.ppid)
+    end
+
+    Process.kill(9, *to_kill)
+
+    to_kill.each do |pid|
+      Process.waitpid(pid) rescue nil
+    end
+  end
+
   def process_running? (pid)
+    return false unless pid
     begin
       Process.getpgid(pid)
       true

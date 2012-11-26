@@ -46,12 +46,11 @@ describe ProxyDaemon do
     it 'should be able to stop the process' do
       attached_proxy.stop!
       attached_proxy.should_not be_running
-      subject.should_not be_running #TODO: investigate why this fails
+      subject.should_not be_running
     end
 
     after(:each) { subject.stop! }
   end
 
   after(:each) { subject.stop! }
-
 end
