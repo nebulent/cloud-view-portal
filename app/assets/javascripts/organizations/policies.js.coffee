@@ -22,7 +22,7 @@ updateConnectionChoicesRenderer = ($container)->
 
 $ ->
   $container = $('#policyEditor')
-  return unless $container
+  return unless $container.length
 
   $user_select = $container.find('#user')
   $terminal_select = $container.find('#terminal')

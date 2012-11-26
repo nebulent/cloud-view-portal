@@ -51,7 +51,7 @@ initSession = (sshRelay, term)->
 
 $ ->
   $terminal = $('#sshTerminal')
-  return unless $terminal
+  return unless $terminal.length
   $terminal.terminal terminalHandler, {
     greetings: 'Cloud view portal ssh relay'
     name: 'SSH'
