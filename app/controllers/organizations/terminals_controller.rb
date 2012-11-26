@@ -15,7 +15,7 @@ class Organizations::TerminalsController < Organizations::ApplicationController
     @terminal = @organization.terminals.new(params[:terminal])
 
     if @terminal.save
-      redirect_to organizations_terminals_path
+      redirect_to organizations_dashboard_path('index')
     else
       flash.now[:error] = 'There was an error creating the terminal'
       render :new
