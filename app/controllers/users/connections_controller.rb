@@ -1,7 +1,7 @@
 class Users::ConnectionsController < Users::ApplicationController
 
   def show
-    connection = Connection.find(params[:id])
+    connection = current_user.connections.find(params[:id])
 
     if connection.protocol == :vnc
       redirect_to "/clients/vnc/?uid=#{current_user.id}&sid=#{params[:id]}"
