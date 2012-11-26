@@ -5,10 +5,10 @@
     %th{:colspan => 2}= link_to "Add terminal", new_organizations_terminal_path, :class => "secondary button"
   - @terminals.each do |t|
     %tr{:id => "terminal#{t.id}"}
-      %td{:width => '200px'}= terminal_connect_link(t)
+      %td{:width => '200px'}= t.name
       %td= t.uri
-      %td{:width => '70px'}= link_to "Edit", edit_organizations_terminal_path(t), :class => "button"
-      %td{:width => '70px'}= button_to "Delete", organizations_terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button"
+      %td{:width => '70px'}= link_to "Edit", edit_organizations_terminal_path(t), :class => "button small"
+      %td{:width => '70px'}= button_to "Delete", organizations_terminal_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button small"
 
 :css
   table{
