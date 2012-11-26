@@ -9,6 +9,10 @@ class Connection < ActiveRecord::Base
 
   validates_presence_of :credentials, :port
 
+  def as_json(options={})
+    super(options.merge(methods: [:host]))
+  end
+
   def to_s
     "protocol: #{protocol} user: #{user} port:#{port}"
   end
