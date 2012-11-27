@@ -19,8 +19,7 @@
     background: #f0f0f0;
   }
 
-/remove any intermediary stuff after init
-%script(data-scope="temporary")
+:javascript
   window._cvp = window._cvp ? window._cvp : {}
   window._cvp.sshRelayHost = "#{@ssh_relay_host}"
 
