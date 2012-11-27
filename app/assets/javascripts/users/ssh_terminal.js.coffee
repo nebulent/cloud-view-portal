@@ -1,17 +1,13 @@
-$ ->
-  $terminal = $('#sshTerminal')
-  return unless $terminal.length
-
+initSSH = (credentials)->
   term = new Terminal(80,24)
   socket = io.connect window._cvp.sshRelayHost
 
   beganToReceive = false
 
   doAutoLogin = (socket)->
-    socket.emit 'data', window._cvp.credentials.credentials + "\r\n"
-    delete window._cvp #remove any data
+    socket.emit 'data', credentials.credentials + "\r\n"
 
-  socket.emit 'tty_connect', window._cvp.credentials
+  socket.emit 'tty_connect', credentials
   socket.on 'tty_ready', ->
     term.on 'data', (data)-> socket.emit('data', data)
 
@@ -22,3 +18,10 @@ $ ->
       beganToReceive = true
 
     term.open()
+
+$ ->
+  $terminal = $('#sshTerminal')
+  return unless $terminal.length
+
+  $.getJSON window.location.pathname + '/credentials', (data)->
+    initSSH(data)
