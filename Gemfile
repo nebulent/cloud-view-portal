@@ -6,7 +6,6 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
 gem 'enumify'
-gem 'websocket-rails'
 gem 'posix-spawn'
 gem 'sys-proctable'
 
