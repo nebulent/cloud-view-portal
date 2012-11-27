@@ -1,11 +1,27 @@
-= javascript_include_tag 'jquery.terminal-0.4.22.min'
-= javascript_include_tag 'socket.io.min'
-= stylesheet_link_tag 'jquery.terminal'
+= javascript_include_tag 'term'
+= javascript_include_tag "#{@ssh_relay_host}/socket.io/socket.io.js"
 
+/this is to trigger logic, leave the container here
 #sshTerminal
 
+:css
+  .terminal {
+    margin: 0 auto;
+    border: #000 solid 5px;
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    font-size: 14px;
+    color: #f0f0f0;
+    background: #000;
+  }
 
-:javascript
+  .reverse-video {
+    color: #000;
+    background: #f0f0f0;
+  }
+
+/remove any intermediary stuff after init
+%script#tmp
   window._cvp = window._cvp ? window._cvp : {}
   window._cvp.sshRelayHost = "#{@ssh_relay_host}"
-  window._cvp.credentials = JSON.parse('#{@credentials}')
+  window._cvp.credentials = JSON.parse('#{raw @credentials}')
+  $('#tmp').remove()
