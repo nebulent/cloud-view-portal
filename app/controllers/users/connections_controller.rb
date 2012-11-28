@@ -6,7 +6,7 @@ class Users::ConnectionsController < Users::ApplicationController
     if connection.protocol == :vnc
       redirect_to "/clients/vnc/?uid=#{current_user.id}&sid=#{params[:id]}"
     else
-      @ssh_relay_host = Rails.application.config.ssh_relay_host
+      @ssh_relay_host = ENV['CVP_SSH_RELAY']
     end
   end
 
