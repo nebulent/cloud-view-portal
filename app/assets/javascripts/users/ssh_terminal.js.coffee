@@ -14,7 +14,7 @@ initSSH = (credentials)->
     socket.on 'data', (data)->
       term.write(data)
       return if beganToReceive
-      doAutoLogin(socket)
+      setTimeout (-> doAutoLogin(socket)), 1000
       beganToReceive = true
 
     term.open()
