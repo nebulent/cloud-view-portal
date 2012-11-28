@@ -19,9 +19,12 @@ initSSH = (credentials)->
 
     term.open()
 
+termInit = false
 $ ->
   $terminal = $('#sshTerminal')
   return unless $terminal.length
+  return if termInit
+  termInit = true
 
   $.getJSON window.location.pathname + '/credentials', (data)->
     initSSH(data)
