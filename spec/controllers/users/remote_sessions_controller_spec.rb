@@ -7,9 +7,7 @@ describe Users::RemoteSessionsController do
   let (:dummy_terminal) { stub(id: rand(100), create_session: dummy_session) }
 
   context '#create' do
-    it 'should delegate to ConnectionHelper' do
-      #
-    end
+    it 'not necessary to test since this is a prototypic interaction'
   end
 
   context '#destroy' do
