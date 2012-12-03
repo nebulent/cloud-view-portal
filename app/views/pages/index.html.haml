@@ -1,7 +1,11 @@
-.six.columns#organizationHalf
-  %h2 Organizations
+.hero-unit
+  %h1 Cloud View Portal
+  %p Connect to any terminal, from the cloud
 
-  .five.columns
+.row
+  .span6#organizationHalf
+    %h2 Organizations
+
     - if head_signed_in?
       = link_to 'Go to dashboard', organizations_dashboard_path('index')
     - else
@@ -10,12 +14,10 @@
       %a{href: new_head_registration_path}
         %h3(style='color: darkblue; text-decoration: underline')
           Register new organization
-  .clear
 
-.six.columns#usersHalf
-  %h2 Users
+  .span6#usersHalf
+    %h2 Users
 
-  .five.columns
     - if user_signed_in?
       = link_to 'Go to dashboard', users_dashboard_path('index')
     - else
