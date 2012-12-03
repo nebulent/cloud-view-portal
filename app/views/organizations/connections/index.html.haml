@@ -1,7 +1,7 @@
 - if @terminal.has_connections?
   %h4 Connections for #{@terminal.uri}
 
-  %table.twelve
+  %table.table.table-striped.table-bordered
     %thead
       %tr
         %th Username
@@ -18,4 +18,4 @@
 - else
   %h4
     This terminal has no connections yet.
-= link_to 'Create connection', new_organizations_terminal_connection_path(:terminal_id => @terminal.id), class: 'small button'
+= link_to 'Create connection', new_organizations_terminal_connection_path(:terminal_id => @terminal.id), class: 'btn btn-primary'
