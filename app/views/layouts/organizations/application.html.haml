@@ -7,17 +7,17 @@
     = csrf_meta_tags
 
   %body
-    %nav.top-bar
-      %ul
-        %li.name
-          %h1= @organization.name
-      %section
-        %ul.left
+    .navbar
+      .navbar-inner
+        %a.brand CVP | #{@organization.name}
+        %ul.nav
           %li= link_to 'Dashboard', organizations_dashboard_path('index')
           %li= link_to 'Access Policies', organizations_policies_path
-        %ul.right
-          %li= button_to "Logout", destroy_head_session_path, method: :delete
+        %ul.nav.pull-right
+          %li(style="padding-top: 10px")
+            = button_to "Logout", destroy_head_session_path, method: :delete
 
     = render 'flash_messages'
-    = yield
+    .container
+      = yield
 

@@ -7,17 +7,8 @@
     = csrf_meta_tags
 
   %body
-    .header
-      .eleven.columns
-        %a(href= '/')
-          %h1 Cloud View Portal
-      .one.column
-        %br
-        proto v1
-      .clear
-
-    %hr
+    %p
     = render 'flash_messages'
-
-    = yield
+    .container
+      = yield
 
