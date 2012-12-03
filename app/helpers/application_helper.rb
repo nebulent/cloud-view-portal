@@ -5,7 +5,12 @@ module ApplicationHelper
   end
 
   def delete_button (name, path, opts={})
-    button_to name, path, opts.merge(method: :delete, confirm: 'Are you sure')
+    btn_opts = {
+      method: :delete, confirm: 'Are you sure ?',
+      'class' => 'btn btn-danger btn-small',
+      style: 'background: !important; color: !important'
+    }
+    button_to name, path, opts.merge(btn_opts)
   end
 
 end
