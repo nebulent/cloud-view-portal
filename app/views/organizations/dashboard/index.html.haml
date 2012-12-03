@@ -1,31 +1,32 @@
-.six.columns
-  .eleven.columns
-    %h3 Users
-  .one.column
-    = link_to 'create', new_organizations_user_registration_path, class: 'create_link tiny button'
-  .clear
-  %table.twelve
-    %thead
-      %tr
-        %th email
-    %tbody
-      - @organization.users.each do |user|
+.row
+  .span6
+    %h3.inline Users
+    .inline.pull-right
+      = link_to 'create', new_organizations_user_registration_path, class: 'create_link btn btn-inverse'
+    .clear
+    %table.table.table-bordered.table-striped
+      %thead
         %tr
-          %td= user.email
+          %th email
+          %th allowed connections
+      %tbody
+        - @organization.users.each do |user|
+          %tr
+            %td= user.email
+            %td= user.connections.count
 
-.six.columns
-  .eleven.columns
-    %h3 Terminals
-  .one.column
-    = link_to 'create', new_organizations_terminal_path, class: 'create_link tiny button'
-  .clear
-  %table.twelve
-    %thead
-      %tr
-        %th name
-        %th connections
-    %tbody
-      - @organization.terminals.each do |terminal|
+  .span6
+    %h3.inline Terminals
+    .inline.pull-right
+      = link_to 'create', new_organizations_terminal_path, class: 'create_link btn btn-inverse'
+    .clear
+    %table.table.table-bordered.table-striped
+      %thead
         %tr
-          %td= terminal.name
-          %td= link_to 'view', organizations_terminal_connections_path(:terminal_id => terminal.id)
+          %th name
+          %th connections
+      %tbody
+        - @organization.terminals.each do |terminal|
+          %tr
+            %td= terminal.name
+            %td= link_to 'view', organizations_terminal_connections_path(:terminal_id => terminal.id)
