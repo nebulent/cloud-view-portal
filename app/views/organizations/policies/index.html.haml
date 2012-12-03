@@ -1,8 +1,8 @@
-%h4 User access policy
+%h3.inline User access policies
+.inline.pull-right
+  = link_to 'Add access rule', new_organizations_policy_path, :class => 'btn btn-small btn-inverse', style: 'margin-top: 20px;'
 
-= link_to 'Add access rule', new_organizations_policy_path, :class => 'button small'
-
-%table.twelve
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th User
