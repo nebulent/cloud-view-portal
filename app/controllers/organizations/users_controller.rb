@@ -1,5 +1,7 @@
 class Organizations::UsersController < Devise::RegistrationsController
 
+  layout 'organizations/application'
+
   def create
     build_resource(params[:user])
 
