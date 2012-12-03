@@ -3,7 +3,7 @@
   %p Connect to any terminal, from the cloud
 
 .row
-  .span6#organizationHalf
+  .well.span6#organizationHalf
     %h2 Organizations
 
     - if head_signed_in?
@@ -15,7 +15,7 @@
         %h3(style='color: darkblue; text-decoration: underline')
           Register new organization
 
-  .span6#usersHalf
+  .well.span5#usersHalf
     %h2 Users
 
     - if user_signed_in?
