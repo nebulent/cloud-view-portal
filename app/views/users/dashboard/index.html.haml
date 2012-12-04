@@ -1,14 +1,12 @@
 %h3 Connections
 
-%table.twelve
+%table.table.table-bordered.table-striped
   %thead
     %tr
       %th Terminal
       %th Connection
-      %th
   %tbody
     - @connections.each do |conn|
       %tr
         %td= conn.terminal.uri
-        %td= conn
-        %td= link_to 'Connect', users_connection_path(conn)
+        %td= link_to conn, users_connection_path(conn)
