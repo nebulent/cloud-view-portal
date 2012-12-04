@@ -1,32 +1,36 @@
 .row
   .span6
-    %h3.inline Users
-    .inline.pull-right
-      = link_to 'create', new_organizations_user_registration_path, class: 'create_link btn btn-inverse btn-small'
-    .clear
-    %table.table.table-bordered.table-striped
-      %thead
-        %tr
-          %th email
-          %th allowed connections
-      %tbody
-        - @organization.users.each do |user|
-          %tr
-            %td= user.email
-            %td= user.connections.count
+    .widget
+      .widget-header
+        %h3 Users
+        .inline.pull-right
+          = link_to 'create', new_organizations_user_registration_path, class: 'create_link btn btn-inverse btn-small'
+      .widget-content
+        %table.table.table-striped
+          %thead
+            %tr
+              %th email
+              %th allowed connections
+          %tbody
+            - @organization.users.each do |user|
+              %tr
+                %td= user.email
+                %td= user.connections.count
 
   .span6
-    %h3.inline Terminals
-    .inline.pull-right
-      = link_to 'create', new_organizations_terminal_path, class: 'create_link btn btn-inverse btn-small'
-    .clear
-    %table.table.table-bordered.table-striped
-      %thead
-        %tr
-          %th name
-          %th connections
-      %tbody
-        - @organization.terminals.each do |terminal|
-          %tr
-            %td= terminal.name
-            %td= link_to 'view', organizations_terminal_connections_path(:terminal_id => terminal.id)
+    .widget
+      .widget-header
+        %h3 Terminals
+        .inline.pull-right
+          = link_to 'create', new_organizations_terminal_path, class: 'create_link btn btn-inverse btn-small'
+      .widget-content
+        %table.table.table-striped
+          %thead
+            %tr
+              %th name
+              %th connections
+          %tbody
+            - @organization.terminals.each do |terminal|
+              %tr
+                %td= terminal.name
+                %td= link_to 'view', organizations_terminal_connections_path(:terminal_id => terminal.id)
