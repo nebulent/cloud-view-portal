@@ -1,11 +1,13 @@
 = form_for("user", :url => user_session_path) do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.label :password
-  = f.password_field :password
-  %br
-  .inline=f.check_box :remember_me
-  .inline=f.label :remember_me
-  %br
-  .inline=f.submit 'Sign in', 'class' => 'btn btn-primary'
-  .inline.pull-right=link_to "Forgot your password?", new_password_path('user')
+  .login-fields
+    .field
+      = f.label :email
+      = f.text_field :email, 'class' => 'login username-field', 'placeholder' => 'email'
+    .field
+      = f.label :password
+      = f.password_field :password, 'class' => 'login password-field', 'placeholder' => 'password'
+  .login-actions
+    .pull-left= f.check_box :remember_me, 'class' => 'login-checkbox', 'tabindex' => 4
+    .pull-left= f.label :remember_me, 'class' => 'choice'
+    .pull-right= f.submit 'Sign in', 'class' => 'btn btn-primary'
+  =link_to "Forgot your password?", new_password_path('user')

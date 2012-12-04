@@ -4,7 +4,7 @@
 
 .row
   .span6
-    .widget#orgLogin
+    .widget.orgLogin
       .widget-header
         %h3 Organizations
         - unless head_signed_in?
@@ -22,10 +22,15 @@
         - else
           = render 'organizations/sessions/form'
 
-  .well.span5#usersHalf
-    %h2 Users
-
-    - if user_signed_in?
-      = link_to 'Go to dashboard', users_dashboard_path('index')
-    - else
-      = render 'users/sessions/form'
+  .span6
+    .widget.orgLogin
+      .widget-header
+        %h3 Users
+      .widget-content
+        - if user_signed_in?
+          .shortcuts
+            %a.shortcut{:href => users_dashboard_path('index')}
+              %i.shortcut-icon.icon-th
+              %span.shortcut-label Dashboard
+        - else
+          = render 'users/sessions/form'
