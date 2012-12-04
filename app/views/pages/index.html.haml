@@ -3,17 +3,24 @@
   %p Connect to any terminal, from the cloud
 
 .row
-  .well.span6#organizationHalf
-    %h2 Organizations
-
-    - if head_signed_in?
-      = link_to 'Go to dashboard', organizations_dashboard_path('index')
-    - else
-      = render 'organizations/sessions/form'
-
-      %a{href: new_head_registration_path}
-        %h3(style='color: darkblue; text-decoration: underline')
-          Register new organization
+  .span6
+    .widget#orgLogin
+      .widget-header
+        %h3 Organizations
+        - unless head_signed_in?
+          %a.btn.btn-success.pull-right#orgRegister{href: new_head_registration_path}
+            Register
+      .widget-content
+        - if head_signed_in?
+          .shortcuts
+            %a.shortcut{:href => organizations_dashboard_path('index')}
+              %i.shortcut-icon.icon-th
+              %span.shortcut-label Dashboard
+            %a.shortcut{:href => organizations_policies_path}
+              %i.shortcut-icon.icon-lock
+              %span.shortcut-label Access Policies
+        - else
+          = render 'organizations/sessions/form'
 
   .well.span5#usersHalf
     %h2 Users

@@ -1,0 +1,20 @@
+.widget#orgLogin form {
+  input.login {
+    width: 360px;
+    max-width: 360px;
+    height: 17px;
+  }
+
+
+  .login-actions {
+    margin: 0;
+  }
+
+  .login-actions .pull-left label {
+    margin: 3px;
+  }
+}
+
+a#orgRegister {
+  margin: 5px 5px 0 0;
+}
