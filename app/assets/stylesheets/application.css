@@ -12,6 +12,6 @@
  *= require twitter/bootstrap
  *= require_directory ./theme
  *= require style
- *= require_directory ./organizations
+ *= require_tree ./organizations
  */
 
