@@ -9,7 +9,7 @@
   %body
     .navbar.navbar-inverse
       .navbar-inner
-        %a.brand CVP | #{@organization.name}
+        = link_to "CVP | #{@organization.name}", organizations_dashboard_path('index'), 'class' => 'brand'
         %ul.nav
           %li
             %a{href: organizations_dashboard_path('index')}
