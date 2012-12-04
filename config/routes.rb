@@ -3,7 +3,8 @@ Cloudview::Application.routes.draw do
     sessions: 'users/sessions'
   }
   devise_for :heads, path: 'organization', controllers: {
-    registrations: 'organizations/registrations'
+    registrations: 'organizations/registrations',
+    sessions: 'organizations/sessions'
   }
 
   namespace :users do
