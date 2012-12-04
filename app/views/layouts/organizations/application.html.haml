@@ -11,11 +11,19 @@
       .navbar-inner
         %a.brand CVP | #{@organization.name}
         %ul.nav
-          %li= link_to 'Dashboard', organizations_dashboard_path('index')
-          %li= link_to 'Access Policies', organizations_policies_path
+          %li
+            %a{href: organizations_dashboard_path('index')}
+              %i.icon-th.icon-white
+              Dashboard
+          %li
+            %a{href: organizations_policies_path}
+              %i.icon-lock.icon-white
+              Access policies
         %ul.nav.pull-right
-          %li(style="padding-top: 10px")
-            = button_to "Logout", destroy_head_session_path, method: :delete
+          %li
+            %a
+              %i.icon-off.icon-white
+              .inline= button_to "Logout", destroy_head_session_path, method: :delete
 
     = render 'flash_messages'
     .container
