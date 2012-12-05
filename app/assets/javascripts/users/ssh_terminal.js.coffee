@@ -1,11 +1,22 @@
+keyBinder = (sock)->
+  (container, keycode)->
+    $(container).click -> sock.emit 'data', keycode
+
 initKbdHelpers = (socket)->
-  $('button#CtrlC').click ->
-    socket.emit 'data', "\u0003"
+  bind = keyBinder(socket)
+  bind('button#CtrlC', "\u0003")
 
   $('button.fun').click ->
     key = parseInt $(this).attr('data-key')
     code = "\u001bO#{String.fromCharCode(79+key)}"
     socket.emit 'data', code
+
+  bind 'button#Ins', "\u001b[2~"
+  bind 'button#Del', "\u001b[3~"
+  bind 'button#Home', "\u001bOH"
+  bind 'button#End', "\u001bOF"
+  bind 'button#PgUp', "\u001b[5~"
+  bind 'button#PgDown', "\u001b[6~"
 
 
 ttyReady = (socket, term, autoLogin)->
