@@ -24,7 +24,7 @@ ttyReady = (socket, term, autoLogin)->
     initKbdHelpers(socket)
 
     term.on 'data', (data)->
-      console.log JSON.stringify(data)
+      #console.log JSON.stringify(data)
       socket.emit('data', data)
 
     socket.on 'data', (data)->
