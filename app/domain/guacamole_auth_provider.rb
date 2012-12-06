@@ -1,4 +1,4 @@
-class GuacamoleAuthHelper
+class GuacamoleAuthProvider
   class << self
 
     def user_connections (user)
