@@ -2,7 +2,9 @@ class GuacamoleAuthProvider
   class << self
 
     def user_connections (user)
-      connections = user.connections.map do |conn|
+      connections = user.connections.select do |conn|
+        conn.protocol != :ssh
+      end.map do |conn|
         {
           name: conn.terminal.uri,
           protocol: conn.protocol,
