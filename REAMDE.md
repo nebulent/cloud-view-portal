@@ -12,5 +12,14 @@ At the moment, CVP relies on a simple daemon which proxies traffic from VNC via 
 ## RDP
 No support yet.
 
+## Sample data
+after running rake db:seed the following logins are available
+
+organization:
+  email: 'test@org.com', password: 'qweqwe',
+
+user:
+  email: 'user@org.com', password: 'qweqwe',
+
 ## Also
 ### Gem build dependencies `libsqlite3-dev, libopenssl-dev, libqt4-dev, libqtwebkit-dev '
