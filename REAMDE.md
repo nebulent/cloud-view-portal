@@ -7,7 +7,7 @@ To make CVP aware of this service, you have to pass it's external url as a envir
 The SSH relay project is available at https://bitbucket.org/nebulent/cvp-ssh-relay
 
 ## VNC
-To manage VNC and RDP connections, CVP uses guacamole. We have implemented a guacamole authentication plugin, which queries available machines from CVP app and lists them in guacamole.
+To connect to VNC and RDP machines, CVP uses guacamole. We have implemented a guacamole authentication plugin, which queries available machines from CVP app and lists them in guacamole.
 The guacamole plugin along with instructions how to set up guacamole is available at https://github.com/nebulent/guacamole-auth-plugin
 
 ## Sample data
