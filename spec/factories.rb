@@ -23,6 +23,8 @@ FactoryGirl.define do
 
   factory :user do
     sequence(:email) {|n| "user#{n}@test.com " }
+    password "qweqwe"
+    password_confirmation "qweqwe"
     association :organization
   end
 end
