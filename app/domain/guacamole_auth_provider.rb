@@ -3,13 +3,17 @@ class GuacamoleAuthProvider
 
   class << self
 
-    def valid_credentials?(username, password)
+    def get_user(username, password)
       user = User.find_by_email(username)
-      user and user.valid_password?(password)
+      unless user and user.valid_password?(password)
+        raise InvalidCredentialsError.new
+      end
+
+      user
     end
 
     def user_connections (username, password)
-      raise InvalidCredentialsError.new unless valid_credentials?(username, password)
+      user = get_user(username, password)
 
       connections = user.connections.select do |conn|
         conn.protocol != :ssh
@@ -23,7 +27,7 @@ class GuacamoleAuthProvider
         }
       end
 
-      { username: user.email, connections: connections }
+      { username: user.email, connections: connections || [] }
     end
 
   end
