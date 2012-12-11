@@ -1,14 +1,17 @@
 require_relative '../../app/domain/guacamole_auth_provider'
-require 'factory_girl'
 
-require_relative '../dummy_models'
-require_relative '../factories'
+unless defined?(FactoryGirl)
+  require 'factory_girl'
 
+  require_relative '../dummy_models'
+  require_relative '../factories'
+end
 
 describe GuacamoleAuthProvider do
   let (:terminal) { stub FactoryGirl.attributes_for(:terminal) }
   let (:connection) { stub FactoryGirl.attributes_for(:connection).merge({
-                            :terminal => terminal }) }
+                            :terminal => terminal,
+                            :protocol => :vnc}) }
   let (:user) { stub FactoryGirl.attributes_for(:user) }
 
   before do
