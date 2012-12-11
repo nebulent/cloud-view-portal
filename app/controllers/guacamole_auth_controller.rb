@@ -1,10 +1,9 @@
 class GuacamoleAuthController < ApplicationController
 
   def check
-    user = User.where(email: params[:username],
-                      encrypted_password: params[:password]).first
+    user = User.find_by_email(params[:username])
 
-    if user
+    if user and user.valid_password?(params[:password])
       return render json: GuacamoleAuthProvider.user_connections(user)
     else
       return render nothing: true, status: 401
