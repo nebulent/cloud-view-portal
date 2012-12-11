@@ -7,10 +7,8 @@ To make CVP aware of this service, you have to pass it's external url as a envir
 The SSH relay project is available at https://bitbucket.org/nebulent/cvp-ssh-relay
 
 ## VNC
-At the moment, CVP relies on a simple daemon which proxies traffic from VNC via websockets, and this daemon doesn't do concurrent connections. This means that every time someone connects to a VNC terminal in the app, a new daemon is launched to listen on a random open port, and the JS client connects to this port.
-
-## RDP
-No support yet.
+To manage VNC and RDP connections, CVP uses guacamole. We have implemented a guacamole authentication plugin, which queries available machines from CVP app and lists them in guacamole.
+The guacamole plugin along with instructions how to set up guacamole is available at https://github.com/nebulent/guacamole-auth-plugin
 
 ## Sample data
 after running rake db:seed the following logins are available
