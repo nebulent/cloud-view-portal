@@ -20,4 +20,9 @@ FactoryGirl.define do
     sequence(:email) {|n| "head#{n}@test.com " }
     association :organization
   end
+
+  factory :user do
+    sequence(:email) {|n| "user#{n}@test.com " }
+    association :organization
+  end
 end
