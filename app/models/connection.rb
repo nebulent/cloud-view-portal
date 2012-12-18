@@ -1,5 +1,5 @@
 class Connection < ActiveRecord::Base
-  enum :protocol, [:vnc, :ssh]
+  enum :protocol, [:vnc, :ssh, :rdp]
 
   belongs_to :terminal
   has_many :remote_sessions
