@@ -2,7 +2,7 @@
 = javascript_include_tag "#{@ssh_relay_host}/socket.io/socket.io.js"
 
 /this is to trigger logic, leave the container here
-#sshTerminal(style="margin: 10px")
+#sshTerminalButtons
   %p
     %button.fun(data-key="1") F1
     %button.fun(data-key="2") F2
@@ -34,6 +34,13 @@
     color: #f0f0f0;
     background: #000;
     line-height: 14px;
+    width: 560px;
+    margin: 0 auto;
+  }
+
+  #sshTerminalButtons {
+    width: 560px;
+    margin: 0 auto;
   }
 
   .reverse-video {

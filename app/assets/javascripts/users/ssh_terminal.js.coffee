@@ -49,7 +49,7 @@ initSSH = (credentials)->
 
 termInit = false
 $ ->
-  $terminal = $('#sshTerminal')
+  $terminal = $('#sshTerminalButtons')
   return unless $terminal.length
   return if termInit
   termInit = true
