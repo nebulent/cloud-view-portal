@@ -19,7 +19,7 @@ class GuacamoleAuthProvider
         conn.protocol != :ssh
       end.map do |conn|
         {
-          name: conn.terminal.uri,
+          name: "#{conn.protocol}-#{conn.terminal.uri}",
           protocol: conn.protocol,
           host: conn.terminal.uri,
           port: conn.port,
