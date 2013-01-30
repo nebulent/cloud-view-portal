@@ -5,6 +5,7 @@ class Users::ConnectionsController < Users::ApplicationController
 
     if connection.protocol == :ssh
       @ssh_relay_host = ENV['CVP_SSH_RELAY']
+      @token = SshEndpoint.create_token(connection)
     else
       suffix = "/guacamole/client.xhtml?id=#{connection.protocol}-#{connection.terminal.uri}"
       redirect_to ENV['CVP_GUAC_RELAY'] + suffix

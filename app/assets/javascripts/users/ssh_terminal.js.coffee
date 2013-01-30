@@ -19,32 +19,25 @@ initKbdHelpers = (socket)->
   bind 'button#PgDown', "\u001b[6~"
 
 
-ttyReady = (socket, term, autoLogin)->
+ttyReady = (socket, term)->
     beganToReceive = false
     initKbdHelpers(socket)
 
     term.on 'data', (data)->
-      #console.log JSON.stringify(data)
       socket.emit('data', data)
 
     socket.on 'data', (data)->
       term.write(data)
-      return if beganToReceive
-      setTimeout (-> autoLogin(socket)), 1000
-      beganToReceive = true
 
     term.open()
 
 
-initSSH = (credentials)->
+initSSH = ->
   term = new Terminal(80,24)
   socket = io.connect window._cvp.sshRelayHost
-
-  autoLogin = (socket)->
-    socket.emit 'data', credentials.credentials + "\r\n"
-
-  socket.emit 'tty_connect', credentials
-  socket.on 'tty_ready', -> ttyReady(socket, term, autoLogin)
+  socket.emit 'tty_connect', window._cvp.token
+  socket.on 'tty_ready', -> ttyReady(socket, term)
+  socket.on 'tty_error', (reason)-> alert(reason)
 
 
 termInit = false
@@ -53,6 +46,4 @@ $ ->
   return unless $terminal.length
   return if termInit
   termInit = true
-
-  $.getJSON window.location.pathname + '/credentials', (data)->
-    initSSH(data)
+  initSSH()
