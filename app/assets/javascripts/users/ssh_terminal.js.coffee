@@ -34,7 +34,7 @@ ttyReady = (socket, term)->
 
 initSSH = ->
   term = new Terminal(80,24)
-  socket = io.connect window._cvp.sshRelayHost
+  socket = io.connect "http://cvp-ssh.nebulent.com"
   socket.emit 'tty_connect', window._cvp.token
   socket.on 'tty_ready', -> ttyReady(socket, term)
   socket.on 'tty_error', (reason)-> alert(reason)
