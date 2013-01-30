@@ -8,10 +8,16 @@ class SshEndpoint
       raise InvalidConnectionError.new 'The connection\'s protocol is not ssh'
     end
 
-    client.post TOKEN_PATH.to_s, connection.attributes
+    client.post TOKEN_PATH.to_s, data(connection)
   end
 
   private
+
+  def self.data (connection)
+    {
+      :host => connection.terminal.uri
+    }.merge(connection.attributes)
+  end
 
   def self.client
     RestClient
