@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'haml-rails'
 gem 'sqlite3'
 gem 'jquery-rails'
@@ -8,6 +8,7 @@ gem 'devise'
 gem 'enumify'
 gem 'posix-spawn'
 gem 'sys-proctable'
+gem 'rest-client'
 
 # Gems used only for assets and not required
 # in production environments by default.
