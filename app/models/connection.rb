@@ -6,6 +6,7 @@ class Connection < ActiveRecord::Base
   has_and_belongs_to_many :users, join_table: :users_connections
 
   attr_accessible :user, :protocol, :port, :credentials
+  has_attached_file :certificate
 
   validates_presence_of :credentials, :port
 
