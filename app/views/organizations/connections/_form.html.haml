@@ -1,6 +1,5 @@
 = render 'validation_errors', resource: @connection
 
-- url = organizations_terminal_connections_path(@terminal.id)
 = form_for @connection, url: url, :html => { :multipart => true } do |f|
   = f.label :user
   = f.text_field :user
@@ -13,4 +12,4 @@
   = f.label :certificate
   = f.file_field :certificate
   %br
-  = f.submit 'Create', 'class' => 'btn btn-primary'
+  = f.submit controller.action_name, 'class' => 'btn btn-primary'
