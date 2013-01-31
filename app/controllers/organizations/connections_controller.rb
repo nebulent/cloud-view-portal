@@ -35,10 +35,9 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
 
     if @connection.update_attributes(params[:connection])
       flash.now[:success] = 'The connection has been saved'
-      render 'edit'
-    else
-      render 'edit'
     end
+
+    render 'edit'
   end
 
   def destroy
