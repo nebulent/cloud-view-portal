@@ -10,6 +10,10 @@ class Connection < ActiveRecord::Base
 
   validates_presence_of :credentials, :port
 
+  def has_certificate?
+    certificate.exists?
+  end
+
   def as_json(options={})
     super(options.merge(methods: [:host]))
   end
