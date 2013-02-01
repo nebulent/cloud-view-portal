@@ -9,6 +9,7 @@ class Organizations::TerminalsController < Organizations::ApplicationController
 
   def show
     @terminal = @organization.terminals.find(params[:id])
+    @users = @terminal.connections.map(&:users).flatten.uniq
   end
 
   def edit

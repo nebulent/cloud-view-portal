@@ -1,0 +1,12 @@
+- if @users.empty?
+  %h3 No users are allowed to connect to this terminal
+- else
+  %h4 Users which can connect to this terminal
+  - @terminal.connections.each do |c|
+    - unless c.users.empty?
+      - c.users.each do |u|
+        %p
+          %b= u.email
+          via
+          %b= c.to_s
+

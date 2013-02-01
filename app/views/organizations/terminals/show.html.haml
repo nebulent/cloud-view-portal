@@ -3,5 +3,7 @@
 
 .inline= link_button 'Edit this terminal', edit_organizations_terminal_path(@terminal)
 .inline= delete_button 'Delete this terminal', organizations_terminal_path(@terminal)
-%br
-= render '/organizations/connections/list'
+%hr
+= render 'connections'
+%hr
+= render 'users'
