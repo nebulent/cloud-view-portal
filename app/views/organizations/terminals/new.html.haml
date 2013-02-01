@@ -1,8 +1,3 @@
 %h3 Create new terminal
 
-= render 'validation_errors', resource: @terminal
-
-= form_for @terminal, url: organizations_terminals_path do |f|
-  = render 'form', :f => f
-  %br
-  = f.submit "Add terminal", 'class' => 'btn btn-primary'
+= render 'form', :url => organizations_terminals_path

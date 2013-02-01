@@ -25,10 +25,11 @@ class Organizations::TerminalsController < Organizations::ApplicationController
     @terminal = @organization.terminals.find(params[:id])
 
     unless @terminal.update_attributes(params[:terminal])
-      flash.now[:error] = 'There was a error updating the terminal'
+      render :edit
+    else
+      flash[:success] = 'Terimnal successfully updated'
+      redirect_to organizations_dashboard_path(:index)
     end
-
-    render :edit
   end
 
   def destroy

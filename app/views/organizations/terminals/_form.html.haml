@@ -1,4 +1,8 @@
-= f.label :name
-= f.text_field :name
-= f.label :uri
-= f.text_field :uri
+= render 'validation_errors', :resource => @terminal
+= form_for @terminal, :url => url do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :uri
+  = f.text_field :uri
+  %br
+  = f.submit controller.action_name
