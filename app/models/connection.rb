@@ -8,7 +8,7 @@ class Connection < ActiveRecord::Base
   attr_accessible :user, :protocol, :port, :credentials
   has_attached_file :certificate
 
-  validates_presence_of :credentials, :port
+  validates_presence_of :port
 
   def has_certificate?
     certificate.exists?
