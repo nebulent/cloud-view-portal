@@ -19,9 +19,9 @@ class SshEndpoint
     }
 
     if connection.has_certificate?
-      attrs[:cert] = connection.certificate.to_file
+      attrs[:cert] = File.new(connection.certificate.path, 'rb')
     end
-
+    p attrs
     attrs.merge(connection.attributes)
   end
 
