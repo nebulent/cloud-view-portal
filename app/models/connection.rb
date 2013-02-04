@@ -6,7 +6,7 @@ class Connection < ActiveRecord::Base
   has_and_belongs_to_many :users, join_table: :users_connections
 
   attr_accessible :user, :protocol, :port, :credentials, :certificate
-  has_attached_file :certificate
+  has_attached_file :certificate, :path => ":rails_root/storage/keys/:id/:basename.:extension"
 
   validates_presence_of :port
 
