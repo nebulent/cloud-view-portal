@@ -1,3 +1,3 @@
 %h4 Create a new connection for #{@terminal.uri}
 
-= render 'form'
+= render 'form', :url => organizations_terminal_connections_path(@terminal.id)

@@ -1,3 +1,2 @@
-= form_for @terminal do |f|
-  = render 'form', :f => f
-  = f.submit "Update"
+%h4 Edit terminal
+= render 'form', :url => organizations_terminal_path(@terminal)

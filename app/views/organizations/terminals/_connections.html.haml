@@ -1,5 +1,5 @@
 - if @terminal.has_connections?
-  %h4 Connections for #{@terminal.uri}
+  %h4 Connections
 
   %table.table.table-striped.table-bordered
     %thead
@@ -14,7 +14,11 @@
           %td= connection.user
           %td= connection.port
           %td= connection.protocol
-          %td= delete_button 'Delete', organizations_terminal_connection_path(:terminal_id => @terminal.id, :id => connection.id)
+          %td
+            .inline
+              = link_button 'Edit', edit_organizations_terminal_connection_path(@terminal, connection)
+            .inline
+              = delete_button 'Delete', organizations_terminal_connection_path(@terminal, connection)
 - else
   %h4
     This terminal has no connections yet.

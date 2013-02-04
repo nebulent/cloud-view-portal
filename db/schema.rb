@@ -11,14 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116160000) do
+ActiveRecord::Schema.define(:version => 20130131114243) do
 
   create_table "connections", :force => true do |t|
-    t.integer "terminal_id"
-    t.string  "user"
-    t.integer "port"
-    t.string  "protocol"
-    t.string  "credentials"
+    t.integer  "terminal_id"
+    t.string   "user"
+    t.integer  "port"
+    t.string   "protocol"
+    t.string   "credentials"
+    t.string   "certificate_file_name"
+    t.string   "certificate_content_type"
+    t.integer  "certificate_file_size"
+    t.datetime "certificate_updated_at"
   end
 
   create_table "heads", :force => true do |t|

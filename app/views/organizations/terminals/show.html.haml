@@ -1,0 +1,9 @@
+%h4= @terminal.name
+%p= @terminal.uri
+
+.inline= link_button 'Edit this terminal', edit_organizations_terminal_path(@terminal)
+.inline= delete_button 'Delete this terminal', organizations_terminal_path(@terminal)
+%hr
+= render 'connections'
+%hr
+= render 'users'

@@ -1,6 +1,6 @@
 class Organizations::ConnectionsController < Organizations::ApplicationController
   before_filter :fetch_terminal
-  before_filter :get_protocols, :only => [:edit, :new, :create]
+  before_filter :get_protocols
 
   def index
     @connections = @terminal.connections
@@ -20,18 +20,24 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
 
     if @connection.save
       flash.now[:success] = 'The connection has been successfully created'
-      redirect_to organizations_terminal_connections_path(@terminal.id)
+      redirect_to organizations_terminal_path(@terminal)
     else
       render 'new'
     end
   end
 
   def edit
-    #
+    @connection = @terminal.connections.find(params[:id])
   end
 
   def update
-    #
+    @connection = @terminal.connections.find(params[:id])
+
+    if @connection.update_attributes(params[:connection])
+      flash.now[:success] = 'The connection has been saved'
+    end
+
+    render 'edit'
   end
 
   def destroy

@@ -5,9 +5,14 @@ class Connection < ActiveRecord::Base
   has_many :remote_sessions
   has_and_belongs_to_many :users, join_table: :users_connections
 
-  attr_accessible :user, :protocol, :port, :credentials
+  attr_accessible :user, :protocol, :port, :credentials, :certificate
+  has_attached_file :certificate
 
-  validates_presence_of :credentials, :port
+  validates_presence_of :port
+
+  def has_certificate?
+    certificate.exists?
+  end
 
   def as_json(options={})
     super(options.merge(methods: [:host]))

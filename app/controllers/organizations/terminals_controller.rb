@@ -7,6 +7,11 @@ class Organizations::TerminalsController < Organizations::ApplicationController
     @terminal = @organization.terminals.new
   end
 
+  def show
+    @terminal = @organization.terminals.find(params[:id])
+    @users = @terminal.connections.map(&:users).flatten.uniq
+  end
+
   def edit
     @terminal = @organization.terminals.find(params[:id])
   end
@@ -25,15 +30,16 @@ class Organizations::TerminalsController < Organizations::ApplicationController
     @terminal = @organization.terminals.find(params[:id])
 
     unless @terminal.update_attributes(params[:terminal])
-      flash.now[:error] = 'There was a error updating the terminal'
+      render :edit
+    else
+      flash[:success] = 'Terimnal successfully updated'
+      redirect_to organizations_dashboard_path(:index)
     end
-
-    render :edit
   end
 
   def destroy
     @terminal = @organization.terminals.find(params[:id])
     @terminal.destroy
-    redirect_to organizations_terminals_path
+    redirect_to organizations_dashboard_path(:index)
   end
 end

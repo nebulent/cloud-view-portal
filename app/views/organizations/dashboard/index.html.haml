@@ -29,8 +29,12 @@
             %tr
               %th name
               %th
+              %th
           %tbody
-            - @organization.terminals.each do |terminal|
+            - @organization.terminals.each do |t|
               %tr
-                %td= terminal.name
-                %td= link_to "#{terminal.connections.count} connection(s)", organizations_terminal_connections_path(:terminal_id => terminal.id)
+                %td= link_to t.name, organizations_terminal_path(t)
+                %td #{t.connections.count} connection(s)
+                %td
+                  .inline= link_button 'Edit', edit_organizations_terminal_path(t)
+                  .inline= delete_button 'X', organizations_terminal_path(t)

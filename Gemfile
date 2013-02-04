@@ -9,6 +9,7 @@ gem 'enumify'
 gem 'posix-spawn'
 gem 'sys-proctable'
 gem 'rest-client'
+gem 'paperclip'
 
 # Gems used only for assets and not required
 # in production environments by default.
