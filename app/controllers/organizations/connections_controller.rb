@@ -20,7 +20,7 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
 
     if @connection.save
       flash.now[:success] = 'The connection has been successfully created'
-      redirect_to organizations_terminal_connections_path(@terminal.id)
+      redirect_to organizations_terminal_path(@terminal)
     else
       render 'new'
     end
