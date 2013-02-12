@@ -117,6 +117,8 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
+    kendoui-rails (0.0.9)
+      jquery-rails
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -234,6 +236,7 @@ DEPENDENCIES
   haml-rails
   headless
   jquery-rails
+  kendoui-rails
   paperclip
   posix-spawn
   rails (= 3.2.12)
