@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'haml-rails'
 gem 'sqlite3'
 gem 'jquery-rails'
@@ -10,6 +10,7 @@ gem 'posix-spawn'
 gem 'sys-proctable'
 gem 'rest-client'
 gem 'paperclip'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.

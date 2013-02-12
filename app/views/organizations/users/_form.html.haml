@@ -7,5 +7,7 @@
   = f.password_field :password
   = f.label :password_confirmation
   = f.password_field :password_confirmation
+  = f.label :role
+  = f.select :role, User::ROLES
   %br
   = f.submit 'Register user', 'class' => 'btn btn-primary'
