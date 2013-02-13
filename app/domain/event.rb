@@ -1,6 +1,7 @@
 class Event
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps::Created
+  include Mongoid::Pagination
 
   field :level, :type => String
   field :name, :type => String
