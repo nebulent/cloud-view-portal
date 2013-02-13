@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
                   :remember_me, :role
 
   def log (attrs)
-    organization.log {:user_id => id}.merge(attrs)
+    organization.log({:user_id => id}.merge(attrs))
   end
 end
