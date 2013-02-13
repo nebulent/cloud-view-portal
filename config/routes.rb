@@ -14,8 +14,6 @@ Cloudview::Application.routes.draw do
       end
     end
 
-    resources :remote_sessions, only: [:create, :destroy]
-
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 
