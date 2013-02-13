@@ -13,6 +13,6 @@ class Organization < ActiveRecord::Base
   end
 
   def events
-    Event.where(:organization_id => id).to_a
+    Event.where(:organization_id => id)
   end
 end
