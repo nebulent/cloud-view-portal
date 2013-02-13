@@ -9,11 +9,16 @@ c.initLogViewer = ($elem)->
         url: dataUrl
         dataType: "json"
     pageSize: 30
+    serverPaging: true
+    serverFiltering: true
+    serverSorting: true
+    schema:
+      data: 'data'
+      total: 'total'
   })
 
   $elem.kendoGrid({
     dataSource: dataSource
-    navigatable: true
     columns: [
       {field: "level", title: "Level"},
       {field: "entity", title: "Entity"},
@@ -25,6 +30,9 @@ c.initLogViewer = ($elem)->
       mode: "single",
       allowUnsort: false
     },
-    scrollable: false,
+    scrollable: false
     pageable: true
+    navigatable: true
+    filterable: true
+    columnMenu: true
   })
