@@ -20,8 +20,9 @@ class OrganizationEventLog
     log {:level => 'debug'}.merge(attrs)
   end
 
+  private
+
   def log (attrs)
     Event.create {:organization_id => id}.merge(attrs)
   end
-
 end
