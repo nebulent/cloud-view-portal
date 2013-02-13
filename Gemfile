@@ -11,6 +11,7 @@ gem 'sys-proctable'
 gem 'rest-client'
 gem 'paperclip'
 gem 'cancan'
+gem "mongoid", "~> 3.0.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
