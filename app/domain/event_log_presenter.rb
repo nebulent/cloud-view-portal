@@ -28,7 +28,14 @@ class EventLogPresenter
   end
 
   def self.query_method (operator)
-    @query_methods ||= {"neq" => :ne, "eq" => :where}
+    @query_methods ||= {
+      "neq" => :ne,
+      "eq" => :where,
+      "startswith" => :starts_with,
+      "contains" => :contains,
+      "doesnotcontain" => :does_not_contain,
+      "endswith" => :ends_with
+    }
     @query_methods[operator]
   end
 
