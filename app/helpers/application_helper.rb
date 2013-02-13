@@ -10,7 +10,8 @@ module ApplicationHelper
 
   def delete_button (name, path, opts={})
     btn_opts = {
-      method: :delete, confirm: 'Are you sure ?',
+      method: :delete,
+      onclick: 'return confirm("Are you sure ?")',
       'class' => 'btn btn-danger btn-small',
       style: 'background: !important; color: !important'
     }
