@@ -8,8 +8,11 @@ class Organization < ActiveRecord::Base
 
   validates_presence_of :name
 
-  def log_event
+  def log
     @log ||= OrganizationEventLog.new(id)
   end
 
+  def events
+    Event.where(:organization_id => id).to_a
+  end
 end
