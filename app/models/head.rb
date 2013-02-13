@@ -9,4 +9,10 @@ class Head < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :organization_attributes
+
+  def after_database_authentication
+    organization.log.info(:message => "Organization head with id #{id} has logged in",
+                          :entity => "OrganizationSession",
+                          :name => "login")
+  end
 end
