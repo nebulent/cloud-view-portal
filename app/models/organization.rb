@@ -8,8 +8,9 @@ class Organization < ActiveRecord::Base
 
   validates_presence_of :name
 
-  def log
-    @log ||= OrganizationEventLog.new(id)
+  def log (attrs={})
+    params = {:organization_id => id}.merge(attrs)
+    OrganizationEventLog.new(params)
   end
 
   def events
