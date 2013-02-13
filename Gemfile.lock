@@ -132,6 +132,9 @@ GEM
       moped (~> 1.2)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
+    mongoid-pagination (0.2.0)
+      activesupport
+      mongoid
     moped (1.4.2)
     multi_json (1.6.0)
     nokogiri (1.5.6)
@@ -245,6 +248,7 @@ DEPENDENCIES
   jquery-rails
   kendoui-rails
   mongoid (~> 3.0.0)
+  mongoid-pagination
   paperclip
   posix-spawn
   rails (= 3.2.12)
