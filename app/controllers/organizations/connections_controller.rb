@@ -19,6 +19,7 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
     @connection  = @terminal.connections.new(params[:connection])
 
     if @connection.save
+      event.info(:message => "Connection with id #{@connection.id} has been created")
       flash.now[:success] = 'The connection has been successfully created'
       redirect_to organizations_terminal_path(@terminal)
     else
@@ -34,6 +35,7 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
     @connection = @terminal.connections.find(params[:id])
 
     if @connection.update_attributes(params[:connection])
+      event.info(:message => "Connection with id #{@connection.id} has been updated")
       flash.now[:success] = 'The connection has been saved'
     end
 
@@ -44,6 +46,7 @@ class Organizations::ConnectionsController < Organizations::ApplicationControlle
     @connection = @terminal.connections.find(params[:id])
 
     if @connection.destroy
+      event.info(:message => "Connection with id #{@connection.id} has been deleted")
       flash[:success] = 'The connection was destroyed'
     else
       flash[:error] = 'There was a error destroying the connection'
