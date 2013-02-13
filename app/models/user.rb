@@ -10,7 +10,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation,
                   :remember_me, :role
 
-  def log (attrs)
+  def log (attrs={})
     organization.log({:user_id => id}.merge(attrs))
+  end
+
+  def after_database_authentication
+    log.info :message => "User has logged in",
+             :entity => "UsersSession",
+             :name => "login"
   end
 end
