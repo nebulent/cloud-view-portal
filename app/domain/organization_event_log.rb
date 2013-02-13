@@ -1,7 +1,7 @@
 class OrganizationEventLog
-  attr_reader :id
-  def initialize (id)
-    @id = id
+  attr_reader :defaults
+  def initialize (attrs)
+    @defaults = attrs
   end
 
   def debug (attrs)
@@ -23,6 +23,6 @@ class OrganizationEventLog
   private
 
   def log (attrs)
-    Event.create({:organization_id => id}.merge(attrs))
+    Event.create(defaults.merge(attrs))
   end
 end
