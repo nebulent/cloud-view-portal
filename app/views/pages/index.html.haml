@@ -19,6 +19,9 @@
             %a.shortcut{:href => organizations_policies_path}
               %i.shortcut-icon.icon-lock
               %span.shortcut-label Access Policies
+            %a.shortcut{:href => organizations_dashboard_path('logs')}
+              %i.shortcut-icon.icon-list
+              %span.shortcut-label Event Log
         - else
           = render 'organizations/sessions/form'
 
