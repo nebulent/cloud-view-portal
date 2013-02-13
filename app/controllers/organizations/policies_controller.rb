@@ -16,6 +16,9 @@ class Organizations::PoliciesController < Organizations::ApplicationController
 
     if terminal and connection and user
       user.connections << connection
+      event.info(:message => "User #{user.email} is authorized to connect
+                              to terminal #{terminal.id}
+                              via connection #{connection.id}")
       flash[:success] = 'The policy was successfully created'
     else
       flash[:error] = 'Invalid policy request'
@@ -26,10 +29,14 @@ class Organizations::PoliciesController < Organizations::ApplicationController
 
   def destroy
     connection = Connection.find(params[:id])
+    terminal = connection.terminal
     user = User.find(params[:user_id])
 
     if connection and user
       user.connections.delete(connection)
+      event.info(:message => "User #{user.email} is no longer able to connect
+                              to terminal #{terminal.id}
+                              via connection #{connection.id}")
       flash[:success] = 'The rule has been successfully removed'
     else
       flash[:error] = 'failed to remove the rule'
