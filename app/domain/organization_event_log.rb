@@ -5,24 +5,24 @@ class OrganizationEventLog
   end
 
   def debug (attrs)
-    log {:level => 'debug'}.merge(attrs)
+    log({:level => 'debug'}.merge(attrs))
   end
 
-  def info
-    log {:level => 'info'}.merge(attrs)
+  def info (attrs)
+    log({:level => 'info'}.merge(attrs))
   end
 
-  def warn
-    log {:level => 'warn'}.merge(attrs)
+  def warn (attrs)
+    log({:level => 'warn'}.merge(attrs))
   end
 
-  def error
-    log {:level => 'debug'}.merge(attrs)
+  def error (attrs)
+    log({:level => 'debug'}.merge(attrs))
   end
 
   private
 
   def log (attrs)
-    Event.create {:organization_id => id}.merge(attrs)
+    Event.create({:organization_id => id}.merge(attrs))
   end
 end
