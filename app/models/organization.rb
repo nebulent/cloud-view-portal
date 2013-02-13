@@ -8,4 +8,8 @@ class Organization < ActiveRecord::Base
 
   validates_presence_of :name
 
+  def log_event
+    @log ||= OrganizationEventLog.new(id)
+  end
+
 end

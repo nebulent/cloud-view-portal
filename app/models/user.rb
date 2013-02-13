@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation,
                   :remember_me, :role
+
+  def log_event (attrs)
+    organization.log_event {:user_id => id}.merge(attrs)
+  end
 end
