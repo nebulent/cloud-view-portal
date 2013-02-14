@@ -16,16 +16,19 @@ c.initLogViewer = ($elem)->
       data: 'data'
       total: 'total'
   })
+  dataSource.sort([
+    {field: "message", dir: "desc"}
+  ])
 
   $elem.kendoGrid({
     dataSource: dataSource
     columns: [
-      {field: "level", title: "Level"},
+      {field: "level", title: "Lvl"},
       {field: "entity", title: "Entity"},
       {field: "name", title: "Event"},
       {field: "message", title: "Message"},
       {field: "created_at", title: "Created at"},
-      {field: "user_id", title: "User ID"}]
+      {field: "user_id", title: "UID"}]
     sortable: {
       mode: "single",
       allowUnsort: false
