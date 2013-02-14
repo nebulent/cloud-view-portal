@@ -19,3 +19,15 @@ form.button_to {
 .container {
   width: 1000px;
 }
+
+a.org_select select {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  width: 150px;
+}
+
+a.org_select form {
+  margin: 0;
+}
