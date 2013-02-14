@@ -2,8 +2,8 @@ class Head < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :organization
-  accepts_nested_attributes_for :organization
+  has_many :organizations
+  accepts_nested_attributes_for :organizations
 
   validates_presence_of :organization
 
@@ -11,8 +11,9 @@ class Head < ActiveRecord::Base
                   :organization_attributes
 
   def after_database_authentication
-    organization.log.info(:message => "Organization head with id #{id} has logged in",
-                          :entity => "OrganizationSession",
-                          :name => "login")
+    Event.create :message => "Head with id #{id} has logged in",
+                 :entity => "OrganizationSession",
+                 :name => "login",
+                 :level => 'info'
   end
 end
