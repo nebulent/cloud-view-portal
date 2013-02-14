@@ -9,7 +9,6 @@ Cloudview::Application.routes.draw do
 
   namespace :users do
     resources :connections, only: [:show]
-
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 
@@ -19,7 +18,6 @@ Cloudview::Application.routes.draw do
     }
 
     resources :policies, only: [:index, :new, :create, :destroy]
-
     resources :terminals do
       resources :connections
     end
@@ -28,8 +26,6 @@ Cloudview::Application.routes.draw do
   end
 
   match '/guacamole/auth' =>  'guacamole_auth#check', via: [:post]
-
   match '/pages/:action', controller: "pages", as: "pages"
   root to: 'pages', action: 'index'
-
 end
