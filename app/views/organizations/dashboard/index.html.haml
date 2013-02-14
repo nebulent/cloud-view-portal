@@ -12,7 +12,7 @@
               %th email
               %th allowed connections
           %tbody
-            - @organization.users.each do |user|
+            - current_organization.users.each do |user|
               %tr
                 %td= user.email
                 %td= user.connections.count
@@ -31,7 +31,7 @@
               %th
               %th
           %tbody
-            - @organization.terminals.each do |t|
+            - current_organization.terminals.each do |t|
               %tr
                 %td= link_to t.name, organizations_terminal_path(t)
                 %td #{t.connections.count} connection(s)
