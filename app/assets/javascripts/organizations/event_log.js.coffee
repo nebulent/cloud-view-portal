@@ -15,10 +15,8 @@ c.initLogViewer = ($elem)->
     schema:
       data: 'data'
       total: 'total'
+    sort: [{field: "message", dir: "desc"}]
   })
-  dataSource.sort([
-    {field: "message", dir: "desc"}
-  ])
 
   $elem.kendoGrid({
     dataSource: dataSource
