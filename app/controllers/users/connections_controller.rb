@@ -15,9 +15,4 @@ class Users::ConnectionsController < Users::ApplicationController
     end
   end
 
-  def credentials
-    connection = current_user.connections.find(params[:id])
-    render json: connection
-  end
-
 end

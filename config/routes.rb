@@ -8,11 +8,7 @@ Cloudview::Application.routes.draw do
   }
 
   namespace :users do
-    resources :connections, only: [:show] do
-      member do
-        get :credentials
-      end
-    end
+    resources :connections, only: [:show]
 
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
