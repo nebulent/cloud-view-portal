@@ -2,7 +2,7 @@ class Head < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :organization
+  has_many :organization
   accepts_nested_attributes_for :organization
 
   validates_presence_of :organization
