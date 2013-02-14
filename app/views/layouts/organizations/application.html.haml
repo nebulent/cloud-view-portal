@@ -9,7 +9,7 @@
   %body
     .navbar.navbar-inverse
       .navbar-inner
-        = link_to "CVP | #{@organization.name}", "/", 'class' => 'brand'
+        = link_to "CVP | #{current_organization.name}", "/", 'class' => 'brand'
         %ul.nav
           %li
             %a{href: organizations_dashboard_path('index')}
@@ -25,6 +25,12 @@
               Event Log
 
         %ul.nav.pull-right
+          %li= link_to '+register', new_organization_organizations_head_path
+          %li
+            %a.org_select
+              - opts = {:name => 'organization_id'}
+              = form_tag switch_organization_organizations_head_path do
+                = collection_select_tag(current_head.organizations, current_organization.id, opts)
           %li
             %a
               %i.icon-off.icon-white
