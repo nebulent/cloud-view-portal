@@ -9,4 +9,4 @@
     - @connections.each do |conn|
       %tr
         %td= conn.terminal.uri
-        %td= link_to conn, users_connection_path(conn)
+        %td= link_to conn, users_connection_path(conn), :target => '_blank' 
