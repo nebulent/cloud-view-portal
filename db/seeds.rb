@@ -6,11 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-org = Organization.create name: 'TestOrg'
-head = Head.create email: 'test@org.com', password: 'qweqwe',
-                   password_confirmation: 'qweqwe'
 
-user = User.create email: 'user@org.com', password: 'qweqwe',
+head = Head.new email: 'test@org.com', password: 'qweqwe',
                    password_confirmation: 'qweqwe'
+head.organizations.new name: 'TestOrg'
+head.save!
 
-org.users << user
+org = head.organizations.first
+org.users.create email: 'user@org.com', password: 'qweqwe',
+                 password_confirmation: 'qweqwe'
+
