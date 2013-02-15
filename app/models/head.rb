@@ -5,8 +5,6 @@ class Head < ActiveRecord::Base
   has_many :organizations
   accepts_nested_attributes_for :organizations
 
-  validates_presence_of :organization
-
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :organization_attributes
 
