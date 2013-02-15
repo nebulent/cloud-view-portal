@@ -1,9 +1,4 @@
 module ApplicationHelper
-
-  def terminal_connect_link (terminal)
-    link_to terminal.name, "/clients/vnc/index.html?term_id=#{terminal.id}"
-  end
-
   def link_button (name, path, opts={})
     button_to name, path, {:method => :get}.merge(opts)
   end
@@ -18,4 +13,14 @@ module ApplicationHelper
     button_to name, path, opts.merge(btn_opts)
   end
 
+  def collection_select_tag(collection, current_id, options={})
+    entries = options_from_collection_for_select(collection, "id", "name", current_id)
+    select_tag collection.first.class.to_s.underscore, entries, options
+  end
+
+  def current_organization
+    orgs = current_head.organizations
+    id = session[:current_org_id] || orgs.first.id
+    @organization ||= orgs.find(id)
+  end
 end

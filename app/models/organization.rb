@@ -1,5 +1,4 @@
 class Organization < ActiveRecord::Base
-
   belongs_to :head
   has_many :users
   has_many :terminals
@@ -7,6 +6,7 @@ class Organization < ActiveRecord::Base
   attr_accessible :name
 
   validates_presence_of :name
+  validates_uniqueness_of :name
 
   def log (attrs={})
     params = {:organization_id => id}.merge(attrs)

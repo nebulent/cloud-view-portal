@@ -17,6 +17,12 @@ Cloudview::Application.routes.draw do
       registrations: 'organizations/users'
     }
 
+    resource :head, only: [:show] do
+      get  :new_organization
+      post :create_organization
+      post :switch_organization
+    end
+
     resources :policies, only: [:index, :new, :create, :destroy]
     resources :terminals do
       resources :connections
