@@ -1,12 +1,19 @@
 %h3 Connections
 
-%table.table.table-bordered.table-striped
+%table.table.table-bordered.table-striped{:id => "grid"}
   %thead
     %tr
       %th Terminal
-      %th Connection
+      %th Protocol
+      %th User
+      %th Port
   %tbody
     - @connections.each do |conn|
       %tr
-        %td= conn.terminal.uri
-        %td= link_to conn, users_connection_path(conn), :target => '_blank' 
+        %td= link_to conn.terminal.uri, users_connection_path(conn), :target => '_blank'
+        %td= link_to conn.protocol.to_s.upcase, users_connection_path(conn), :target => '_blank'
+        %td= link_to conn.user, users_connection_path(conn), :target => '_blank'
+        %td= link_to conn.port, users_connection_path(conn), :target => '_blank'
+
+:javascript
+  _cvp.initUserConnectionViewer($('#grid'))
