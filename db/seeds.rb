@@ -15,4 +15,4 @@ head.save!
 org = head.organizations.first
 org.users.create email: 'user@org.com', password: 'qweqwe',
                  password_confirmation: 'qweqwe'
-
+org.save!
