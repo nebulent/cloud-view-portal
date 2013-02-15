@@ -1,18 +1,18 @@
 class Organizations::PoliciesController < Organizations::ApplicationController
 
   def index
-    @users = @organization.users
+    @users = current_organization.users
   end
 
   def new
-    @users = @organization.users
-    @terminals = @organization.terminals
+    @users = current_organization.users
+    @terminals = current_organization.terminals
   end
 
   def create
-    terminal = @organization.terminals.find(params[:terminal])
+    terminal = current_organization.terminals.find(params[:terminal])
     connection = terminal.connections.find(params[:connection])
-    user = @organization.users.find(params[:user])
+    user = current_organization.users.find(params[:user])
 
     if terminal and connection and user
       user.connections << connection
