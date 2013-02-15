@@ -22,6 +22,10 @@
             %a.shortcut{:href => organizations_dashboard_path('logs')}
               %i.shortcut-icon.icon-list
               %span.shortcut-label Event Log
+            %a.shortcut.logoutButton
+              %i.shortcut-icon.icon-off
+              %span.shortcut-label
+                = button_to "Logout", destroy_head_session_path, method: :delete, style: 'background: transparent; border: 0; color: #666'             
         - else
           = render 'organizations/sessions/form'
 
@@ -35,5 +39,14 @@
             %a.shortcut{:href => users_dashboard_path('index')}
               %i.shortcut-icon.icon-th
               %span.shortcut-label Dashboard
+            %a.shortcut.logoutButton
+              %i.shortcut-icon.icon-off
+              %span.shortcut-label
+                = button_to "Logout", destroy_user_session_path, method: :delete, style: 'background: transparent; border: 0; color: #666'
         - else
           = render 'users/sessions/form'
+
+:javascript
+  $('.logoutButton').click(function () {
+    $(this).find('form').submit()
+  })
