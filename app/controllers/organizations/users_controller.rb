@@ -25,9 +25,14 @@ class Organizations::UsersController < Devise::RegistrationsController
   private
 
   def build_resource (hash=nil)
-    @organization ||= current_head.organization
+    @organization ||= current_organization
     hash ||= resource_params || {}
     self.resource = @organization.users.new(hash)
   end
 
+  def current_organization
+    orgs = current_head.organizations
+    id = session[:current_org_id] || orgs.first.id
+    @organization ||= orgs.find(id)
+  end
 end
