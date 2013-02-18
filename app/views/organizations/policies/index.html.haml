@@ -2,7 +2,7 @@
 .inline.pull-right
   = link_to 'Add access rule', new_organizations_policy_path, :class => 'btn btn-small btn-inverse', style: 'margin-top: 20px;'
 
-%table.table.table-striped.table-bordered
+%table.table.table-striped.table-bordered{:id => "grid"}
   %thead
     %tr
       %th User
@@ -18,3 +18,5 @@
           %td= conn
           %td= delete_button "Delete", organizations_policy_path(id: conn.id, user_id: user.id)
 
+:javascript
+  _cvp.initPoliciesViewer($('#grid'))
