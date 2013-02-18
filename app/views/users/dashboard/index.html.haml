@@ -1,6 +1,6 @@
 %h3 Connections
 
-%table.table.table-bordered.table-striped{:id => "grid"}
+%table.table.table-bordered.table-striped#grid
   %thead
     %tr
       %th Terminal
@@ -10,10 +10,11 @@
   %tbody
     - @connections.each do |conn|
       %tr
-        %td= link_to conn.terminal.uri, users_connection_path(conn), :target => '_blank'
-        %td= link_to conn.protocol.to_s.upcase, users_connection_path(conn), :target => '_blank'
-        %td= link_to conn.user, users_connection_path(conn), :target => '_blank'
-        %td= link_to conn.port, users_connection_path(conn), :target => '_blank'
+        %td= connect_link conn.terminal.uri, conn
+        %td= connect_link conn.protocol.to_s.upcase, conn
+        %td= connect_link conn.user, conn
+        %td= connect_link conn.port, conn
 
 :javascript
   _cvp.initUserConnectionViewer($('#grid'))
+  _cvp.initGuacAutologin($('table#grid'))
