@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                   :remember_me, :role
 
   def log (attrs={})
-    organization.log({:user_id => id}.merge(attrs))
+    organization.log({:user_email => email }.merge(attrs))
   end
 
   def after_database_authentication

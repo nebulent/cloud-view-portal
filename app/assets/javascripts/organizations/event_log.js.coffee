@@ -26,7 +26,7 @@ c.initLogViewer = ($elem)->
       {field: "name", title: "Event"},
       {field: "message", title: "Message"},
       {field: "created_at", title: "Created at"},
-      {field: "user_id", title: "UID"}]
+      {field: "user_email", title: "User"}]
     sortable: {
       mode: "single",
       allowUnsort: false
