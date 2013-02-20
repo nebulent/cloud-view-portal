@@ -1,8 +1,13 @@
-%h3 Connections
+%h3.inline Connections
+.inline.pull-right
+  = button_to "Logout", destroy_user_session_path, method: :delete
+.inline.pull-right
+  = "Logged in as #{current_user.email}"
 
 %table.table.table-bordered.table-striped{:id => "grid"}
   %thead
     %tr
+      %th Name
       %th Terminal
       %th Protocol
       %th User
@@ -10,6 +15,7 @@
   %tbody
     - @connections.each do |conn|
       %tr
+        %td= link_to conn.terminal.name, users_connection_path(conn), :target => '_blank'
         %td= link_to conn.terminal.uri, users_connection_path(conn), :target => '_blank'
         %td= link_to conn.protocol.to_s.upcase, users_connection_path(conn), :target => '_blank'
         %td= link_to conn.user, users_connection_path(conn), :target => '_blank'

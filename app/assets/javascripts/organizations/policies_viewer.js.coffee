@@ -1,19 +1,22 @@
 window._cvp ?= {}
 c = _cvp
 
-c.initUserConnectionViewer = ($e)->
+c.initPoliciesViewer = ($e)->
   $e.kendoGrid({
     dataSource: {
       pageSize: 10
+      group: { 
+        field: "User"
+      }
     }
     columns: [
-      "Name",
-      "Terminal",
-      "Protocol",
       "User",
-      "Port"]
+      "Terminal",
+      "Connection",
+      "Delete"]
+    groupable: true
     scrollable: false
     pageable: true
     navigatable: true
-    filterable: true
+    sortable: true
   })

@@ -8,7 +8,7 @@ class Event
   field :entity, :type => String
   field :message, :type => String
   field :organization_id, :type => Integer
-  field :user_id, :type => Integer
+  field :user_email, :type => String
 
   def self.starts_with (fields)
     reg_where fields, lambda {|str| /#{str}.*/i}
