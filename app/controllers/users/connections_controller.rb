@@ -12,8 +12,9 @@ class Users::ConnectionsController < Users::ApplicationController
       render 'show_ssh'
     else
       @guacamole_relay = ENV['CVP_GUAC_RELAY'] + "/guacamole"
-      suffix = "/guacamole/client.xhtml?id=#{connection.protocol}-#{connection.terminal.uri}"
-      @view_url = ENV['CVP_GUAC_RELAY'] + suffix
+      @token = GuacamoleEndpoint.create_token(current_user, connection)
+      suffix = "/client.xhtml?id=#{connection.protocol}-#{connection.terminal.uri}"
+      @view_url = @guacamole_relay + suffix
       render 'show_guac'
     end
   end
