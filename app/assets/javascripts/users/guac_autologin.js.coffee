@@ -14,8 +14,9 @@ createTempFrame = (url, callback=null)->
     $(this).remove()
     callback() if callback
 
-c.guacAutoLogin = (relay, view_url)->
-  LOGIN_URL = relay + "/login?username=jora@nebulent.com&password=qweqwe"
+c.guacAutoLogin = (relay, view_url, token)->
+  console.log token
+  LOGIN_URL = relay + "/login?username=#{token}&password=whatever"
   LOGOUT_URL = relay + "/logout"
 
   console.log 'logout..'
