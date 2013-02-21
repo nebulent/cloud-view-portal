@@ -1,0 +1,11 @@
+:css
+  iframe {
+    width: 1000px;
+    height: 98%;
+    position: absolute;
+  }
+
+/%iframe{:src => @path, :frameborder => 0, :width => '100%', :height => '100%'}
+
+:javascript
+  _cvp.guacAutoLogin("#{@guacamole_relay}", "#{@view_url}")
