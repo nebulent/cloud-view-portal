@@ -15,6 +15,7 @@ gem 'cancan'
 
 gem "mongoid", "~> 3.0.0"
 gem "mongoid-pagination"
+gem 'redis'
 
 # Gems used only for assets and not required
 # in production environments by default.
