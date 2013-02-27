@@ -6,6 +6,10 @@ Given /^I am on the (.+) page$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^I am on the (.+) on the dashboard$/ do |action|
+  visit organizations_dashboard_path(action)
+end
+
 When /^I go to (.+) page$/ do |page_name|
   visit path_to(page_name)
 end
