@@ -4,5 +4,6 @@ Feature: Grant Temporary AWS access
     Given that I am an organization head
     And I am on the index on the dashboard
     And I click "AWS tokens"
-    Then I should be on the AWS access tokens page
+    Then I should see "AWS tokens"
+
 

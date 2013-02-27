@@ -24,6 +24,10 @@
             %a{href: organizations_dashboard_path('logs')}
               %i.icon-list.icon-white
                 Event Log
+          %li
+            %a{href: organizations_dashboard_path('aws_tokens')}
+              %i.icon-key.icon-white
+                AWS tokens
 
         %ul.nav.pull-right
           %li= link_to '+register', new_organization_organizations_head_path
