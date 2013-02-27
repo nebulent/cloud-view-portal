@@ -17,6 +17,7 @@ class GuacamoleEndpoint
       protocol: conn.protocol,
       host: conn.terminal.uri,
       port: conn.port,
+      username: conn.user,
       password: conn.credentials
     }
 
