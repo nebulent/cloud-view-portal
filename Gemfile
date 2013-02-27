@@ -33,7 +33,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.13.0'
 end
 
 group :test do
