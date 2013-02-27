@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206094036) do
+ActiveRecord::Schema.define(:version => 20130227135802) do
 
   create_table "connections", :force => true do |t|
     t.integer  "terminal_id"
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(:version => 20130206094036) do
     t.string  "name",            :null => false
     t.string  "uri",             :null => false
     t.integer "organization_id"
+  end
+
+  create_table "tokens", :force => true do |t|
+    t.datetime "active_at"
+    t.integer  "period"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

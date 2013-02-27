@@ -1,0 +1,9 @@
+= render 'validation_errors', :resource => @token
+= form_for @token, :url => url do |f|
+  = f.label :active_at
+  = f.text_field :active_at
+  = f.label :period
+  = f.number_field :period, :in => 0..72
+  %br
+  = f.submit
+

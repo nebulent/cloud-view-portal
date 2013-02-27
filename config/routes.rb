@@ -28,6 +28,8 @@ Cloudview::Application.routes.draw do
       resources :connections
     end
 
+    resources :tokens
+
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 

@@ -1,0 +1,16 @@
+%table.four.columns.centered
+  %thead
+    %th{:colspan => 2}
+      %h4 Tokens
+    %th{:colspan => 2}
+      = link_to "Add token", new_organizations_token_path, :class => "secondary button"
+  - @tokens.each do |t|
+    %tr
+      %td
+        Token#{t.id}
+      %td
+        =link_to "Edit", edit_organizations_token_path(t), :class => "button small"
+      %td
+        =link_to "Delete", organizations_token_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button small"
+
+
