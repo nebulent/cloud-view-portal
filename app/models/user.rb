@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :organization
   has_and_belongs_to_many :connections, join_table: :users_connections
+  has_many :tokens
 
   attr_accessible :email, :password, :password_confirmation,
                   :remember_me, :role

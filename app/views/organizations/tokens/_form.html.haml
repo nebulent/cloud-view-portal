@@ -1,9 +1,18 @@
 = render 'validation_errors', :resource => @token
-= form_for @token, :url => url do |f|
-  = f.label :active_at
-  = f.text_field :active_at
-  = f.label :period
-  = f.number_field :period, :in => 0..72
-  %br
-  = f.submit
+.row
+  .span12
+    = form_for @token, :url => url do |f|
+      = f.label :active_at
+      .datetime
+        = f.datetime_select :active_at
+      = f.label :period, "Active for: (hrs)"
+      = f.number_field :period, :in => 0..72
+      = f.label :user
+      = f.collection_select(:user_id, User.all, :id, :email, :prompt => true)
 
+      %br
+      = f.submit
+:css
+  .datetime select {
+    width: auto;
+    };
