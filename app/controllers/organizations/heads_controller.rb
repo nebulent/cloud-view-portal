@@ -17,7 +17,19 @@ class Organizations::HeadsController < Organizations::ApplicationController
   end
 
   def edit_organization
-   # 
+    @organization = current_organization
+  end
+
+  def update_organization
+    @organization = current_organization
+
+    if @organization.update_attributes(params[:organization])
+      flash[:success] = 'Organization info updated'
+      redirect_to organizations_dashboard_path('index')
+    else
+      flash[:error] = 'An error occured while updating organization'
+      render 'edit_organization'
+    end
   end
 
   def switch_organization
