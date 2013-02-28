@@ -16,4 +16,8 @@ class Organization < ActiveRecord::Base
   def events
     Event.where(:organization_id => id)
   end
+  
+  def has_amazon_credentials?
+    aws_secret_key.present? and  aws_key_id.present?
+  end
 end
