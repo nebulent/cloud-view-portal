@@ -4,6 +4,7 @@ class Organizations::AwsTokensController < Organizations::ApplicationController
   end
 
   def new
+    @has_aws_key = current_organization.has_amazon_credentials?
     @token = AwsToken.new
   end
 
