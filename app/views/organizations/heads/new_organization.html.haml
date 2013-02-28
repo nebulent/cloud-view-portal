@@ -1,7 +1,3 @@
-= render 'validation_errors', :resource => @organization
+%h3 Create organization
 
-= form_for @organization, url: create_organization_organizations_head_path do |f|
-  = f.label :name
-  = f.text_field :name
-  %br
-  = f.submit 'Create organization'
+= render 'organization_form', url: create_organization_organizations_head_path
