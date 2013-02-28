@@ -33,7 +33,6 @@ Cloudview::Application.routes.draw do
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 
-  match '/guacamole/auth' =>  'guacamole_auth#check', via: [:post]
   match '/pages/:action', controller: "pages", as: "pages"
   root to: 'pages', action: 'index'
 end
