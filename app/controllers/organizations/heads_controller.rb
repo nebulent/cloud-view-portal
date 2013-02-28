@@ -16,6 +16,10 @@ class Organizations::HeadsController < Organizations::ApplicationController
     end
   end
 
+  def edit_organization
+   # 
+  end
+
   def switch_organization
     org = current_head.organizations.find(params[:organization_id])
     if org
