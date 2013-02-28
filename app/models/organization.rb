@@ -3,7 +3,7 @@ class Organization < ActiveRecord::Base
   has_many :users
   has_many :terminals
 
-  attr_accessible :name
+  attr_accessible :name, :aws_key_id, :aws_secret_key
 
   validates_presence_of :name
   validates_uniqueness_of :name
