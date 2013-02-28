@@ -21,7 +21,7 @@ Cloudview::Application.routes.draw do
       get  :new_organization
       post :create_organization
       get :edit_organization
-      post :update_organization
+      put :update_organization
       post :switch_organization
     end
 
