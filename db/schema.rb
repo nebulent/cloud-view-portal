@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228132132) do
+ActiveRecord::Schema.define(:version => 20130228133236) do
 
   create_table "aws_tokens", :force => true do |t|
     t.datetime "active_at"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20130228132132) do
     t.datetime "updated_at",      :null => false
     t.integer  "user_id"
     t.integer  "organization_id"
+  end
+
+  create_table "aws_tokens_users", :force => true do |t|
+    t.integer "user_id"
+    t.integer "aws_token_id"
   end
 
   create_table "connections", :force => true do |t|
