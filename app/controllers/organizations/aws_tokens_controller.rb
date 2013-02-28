@@ -1,6 +1,6 @@
-class Organizations::TokensController < Organizations::ApplicationController
+class Organizations::AwsTokensController < Organizations::ApplicationController
   def index
-    @tokens = Token.all
+    @tokens = []
   end
 
   def new
