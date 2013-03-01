@@ -1,8 +1,4 @@
 %h3.inline Connections
-.inline.pull-right
-  = button_to "Logout", destroy_user_session_path, method: :delete
-.inline.pull-right
-  = "Logged in as #{current_user.email}"
 
 %table.table.table-bordered.table-striped#grid
   %thead
