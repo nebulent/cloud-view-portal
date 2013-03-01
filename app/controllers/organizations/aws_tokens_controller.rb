@@ -14,10 +14,11 @@ class Organizations::AwsTokensController < Organizations::ApplicationController
     period = params[:aws_token][:period]
 
     @token = AwsToken.new params[:aws_token].except(:actions)
+    @actions = AwsToken::ACTIONS
+    @has_aws_key = current_organization.has_amazon_credentials?
+
     if !params[:aws_token][:actions]
       flash.now[:error] = 'you must specifiy at least one allowed action'
-      @actions = AwsToken::ACTIONS
-      @has_aws_key = current_organization.has_amazon_credentials?
       return render('new')
     else
       actions = params[:aws_token][:actions]
