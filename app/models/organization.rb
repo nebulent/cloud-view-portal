@@ -8,6 +8,8 @@ class Organization < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  accepts_nested_attributes_for :head, :allow_destroy => true
+
   def log (attrs={})
     params = {:organization_id => id}.merge(attrs)
     OrganizationEventLog.new(params)

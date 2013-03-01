@@ -2,7 +2,7 @@ class Head < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :organizations
+  has_many :organizations, :dependent => :destroy
   accepts_nested_attributes_for :organizations
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
