@@ -12,7 +12,9 @@ c.initPoliciesViewer = ($e)->
     columns: [
       "User",
       "Terminal",
-      "Connection",
+      "Protocol",
+      "ConnectionUsername",
+      "Port",
       "Delete"]
     groupable: true
     scrollable: false

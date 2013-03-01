@@ -7,7 +7,9 @@
     %tr
       %th User
       %th Terminal
-      %th Connection
+      %th Protocol
+      %th Connection Username
+      %th Port
       %th
   %tbody
     - @users.each do |user|
@@ -15,7 +17,9 @@
         %tr
           %td= user.email
           %td= conn.terminal.uri
-          %td= conn
+          %td= conn.protocol
+          %td= conn.user
+          %td= conn.port
           %td= delete_button "Delete", organizations_policy_path(id: conn.id, user_id: user.id)
 
 :javascript
