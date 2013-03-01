@@ -1,14 +1,16 @@
-%table.four.columns.centered
+%table.table.table-striped
   %thead
     %th ID
     %th URL
     %th Duration
-  - @tokens.each do |t|
-    %tr
-      %td= t.id
-      %td= link_to "open", t.link
-      %td= t.period
-      %td
-        =link_to "Delete", organizations_aws_token_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button small"
+    %th
+  %tbody
+    - @tokens.each do |t|
+      %tr
+        %td= t.id
+        %td= link_to "open", t.link
+        %td= t.period
+        %td
+          = delete_button "Delete", organizations_aws_token_path(t), :class => "btn btn-danger"
 
 
