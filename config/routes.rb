@@ -26,11 +26,11 @@ Cloudview::Application.routes.draw do
     end
 
     resources :policies, only: [:index, :new, :create, :destroy]
+    resources :aws_tokens, only: [:index, :new, :create, :destroy]
     resources :terminals do
       resources :connections
     end
 
-    resources :aws_tokens
 
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end

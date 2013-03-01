@@ -9,26 +9,18 @@ class Organizations::AwsTokensController < Organizations::ApplicationController
   end
 
   def create
-    @token = AwsToken.new(params[:token])
+    user = User.find(params[:aws_token][:user_id])
+    period = params[:aws_token][:period]
+    link = Amazon.create_access_token(current_organization, user.email, period.to_i)
+
+    @token = AwsToken.new :period => period,
+                          :link => link
+
     if @token.save
       event.info(:message => "Token with ID #{@token.id} created")
       redirect_to organizations_aws_tokens_path
     else
       render :new
-    end
-  end
-
-  def edit
-    @token = AwsToken.find(params[:id])
-  end
-
-  def update
-    @token = AwsToken.new
-    if @token.update_attributes(params[:token])
-      event.info(:message => "Token with ID #{@token.id} updated")
-      redirect_to organizations_aws_tokens_path
-    else
-      render :edit
     end
   end
 
