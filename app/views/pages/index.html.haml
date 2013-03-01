@@ -22,6 +22,9 @@
             %a.shortcut{:href => organizations_dashboard_path('logs')}
               %i.shortcut-icon.icon-list
               %span.shortcut-label Event Log
+            %a.shortcut{:href => organizations_aws_tokens_path}
+              %i.shortcut-icon.icon-key
+              %span.shortcut-label AWS Keys
             %a.shortcut.logoutButton
               %i.shortcut-icon.icon-off
               %span.shortcut-label
@@ -39,6 +42,9 @@
             %a.shortcut{:href => users_dashboard_path('index')}
               %i.shortcut-icon.icon-th
               %span.shortcut-label Dashboard
+            %a.shortcut{:href => users_aws_tokens_path}
+              %i.shortcut-icon.icon-key
+              %span.shortcut-label AWS Keys
             %a.shortcut.logoutButton
               %i.shortcut-icon.icon-off
               %span.shortcut-label
