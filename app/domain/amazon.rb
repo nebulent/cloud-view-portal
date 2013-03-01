@@ -1,6 +1,6 @@
 class Amazon
   class << self
-    def create_access_token (organization, username, duration)
+    def create_access_token (organization, username, duration, actions)
       sts = init_sts(organization)
       iam = init_iam(organization)
 
@@ -8,11 +8,11 @@ class Amazon
       create_user_if_needed(iam, group, username)
 
       session = sts.new_federated_session(username,
-                                          :policy => access_policy,
+                                          :policy => access_policy(actions),
                                           :duration => duration.hours)
 
       issuer_url = "http://cvp.nebulent.com/"
-      console_url = "https://console.aws.amazon.com/sns"
+      console_url = "https://console.aws.amazon.com/ec2"
       signin_url = "https://signin.aws.amazon.com/federation"
 
       session_json = {
@@ -48,9 +48,9 @@ class Amazon
       group ||= iam.groups.create(name)
     end
 
-    def access_policy
+    def access_policy (actions)
       policy = AWS::STS::Policy.new
-      policy.allow(:actions => "sns:*",:resources => :any)
+      policy.allow(:actions => actions, :resources => :any)
       policy
     end
 
