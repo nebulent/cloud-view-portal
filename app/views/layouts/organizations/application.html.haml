@@ -24,9 +24,19 @@
             %a{href: organizations_dashboard_path('logs')}
               %i.icon-list.icon-white
               Event Log
+          %li
+            %a{href: organizations_aws_tokens_path}
+              %i.icon-key.icon-white
+              AWS tokens
 
         %ul.nav.pull-right
-          %li= link_to '+register', new_organization_organizations_head_path
+          %li.dropdown
+            %a.dropdown-toggle(data-toggle="dropdown" href="#")
+              Actions
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to 'Register a organization', new_organization_organizations_head_path
+              %li= link_to 'Edit current organization', edit_organization_organizations_head_path
           %li
             %a.org_select
               - opts = {:name => 'organization_id'}

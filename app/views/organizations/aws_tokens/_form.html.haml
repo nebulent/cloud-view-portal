@@ -1,0 +1,14 @@
+= render 'validation_errors', :resource => @token
+
+= form_for @token, :url => url do |f|
+  = f.label :period, "Active for: (hrs)"
+  = f.number_field :period, :in => 0..72, :value => 12
+  = f.label :user
+  = f.collection_select(:user_id, current_organization.users, :id, :email)
+  = f.label :allowed_services
+  - @actions.each do |action|
+    .inline
+      = check_box_tag "aws_token[actions][]", action, false, :class => 'inline'
+      = label_tag '', action.split(':').first.humanize, :class => 'inline', :style => 'margin: 10px 10px 0 0'
+  %hr
+  = f.submit

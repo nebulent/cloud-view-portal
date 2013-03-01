@@ -18,6 +18,7 @@ gem "mongoid-pagination"
 gem 'redis'
 
 gem 'thin'
+gem 'aws-sdk'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,7 +36,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.13.0'
 end
 
 group :test do

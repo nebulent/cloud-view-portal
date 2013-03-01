@@ -1,0 +1,7 @@
+%h3 Create new token
+- if @has_aws_key
+  = render 'form', :url => organizations_aws_tokens_path
+- else
+  .alert
+    Sorry, but your organization has no amazon credentials assigned.
+    = link_to 'Add amazon credentials', edit_organization_organizations_head_path

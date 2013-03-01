@@ -29,4 +29,9 @@ FactoryGirl.define do
     password_confirmation "qweqwe"
     association :organization
   end
+
+  factory :token do
+    active_at Time.now.yesterday()
+    period 48
+  end
 end
