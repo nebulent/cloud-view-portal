@@ -9,7 +9,17 @@
   = f.number_field :port
   = f.label :password
   = f.password_field :credentials
-  = f.label :certificate
-  = f.file_field :certificate
+  #file
+    = f.label :certificate
+    = f.file_field :certificate
   %br
   = f.submit submit_button, 'class' => 'btn btn-primary'
+
+:javascript
+  $('select#connection_protocol').change(function () {
+    if ($(this).val() == 'ssh') {
+      $('#file').show()
+    } else {
+      $('#file').hide()
+    }
+  }).trigger('change')
