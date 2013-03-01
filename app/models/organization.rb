@@ -3,10 +3,11 @@ class Organization < ActiveRecord::Base
   has_many :users
   has_many :terminals
 
-  attr_accessible :name, :aws_key_id, :aws_secret_key
+  attr_accessible :name, :aws_key_id, :aws_secret_key, :subdomain
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_presence_of :name, :subdomain
+  validates_uniqueness_of :name, :subdomain
+  validates_format_of :subdomain, :with => /^[\S][-_A-Z0-9a-z]+$/, :message => "must have only letters, - , _ and numbers"
 
   accepts_nested_attributes_for :head, :allow_destroy => true
 

@@ -37,5 +37,6 @@ VAM::Application.routes.draw do
   end
 
   match '/pages/:action', controller: "pages", as: "pages"
+  match '/', to: 'users/dashboard#index', constraints: {subdomain: /.+/ }
   root to: 'pages', action: 'index'
 end
