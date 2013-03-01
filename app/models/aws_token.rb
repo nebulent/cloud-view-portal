@@ -1,5 +1,7 @@
 class AwsToken < ActiveRecord::Base
-  attr_accessible :active_at, :period, :user_id
-  has_and_belongs_to_many :users
+  attr_accessible :link, :period
+  belongs_to :users
+
+  validates_presence_of :link, :period
 
 end
