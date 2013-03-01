@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Cloudview
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .navbar.navbar
+      .navbar-inner
+        = link_to "CVP | #{current_organization.name}", "/", 'class' => 'brand'
+        %ul.nav
+          %li
+            %a{href: users_dashboard_path('index')}
+              %i.icon-th
+              Dashboard
+          %li
+            %a{href: users_aws_tokens_path}
+              %i.icon-key
+              AWS tokens
+        %ul.nav.pull-right
+          %li
+            %a= current_user.email
+          %li
+            %a
+              %i.icon-off
+              .inline= button_to "Logout", destroy_user_session_path, method: :delete
+    = render 'flash_messages'
+    .container
+      = yield
