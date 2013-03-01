@@ -9,6 +9,7 @@ Cloudview::Application.routes.draw do
 
   namespace :users do
     resources :connections, only: [:show]
+    resources :aws_tokens, only: [:index]
     match '/dashboard/:action', controller: "dashboard", as: "dashboard"
   end
 

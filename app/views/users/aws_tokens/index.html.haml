@@ -1,0 +1,13 @@
+%h3 AWS tokens
+
+%table.table.table-striped
+  %thead
+    %th ID
+    %th URL
+    %th Duration
+  %tbody
+    - @tokens.each do |t|
+      %tr
+        %td= t.id
+        %td= link_to "open", t.link
+        %td= t.period
