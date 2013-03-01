@@ -8,11 +8,9 @@
 .row
   .span12
     = form_for @token, :url => url do |f|
-      = f.label :active_at
-      .datetime
-        = f.datetime_select :active_at
       = f.label :period, "Active for: (hrs)"
-      = f.number_field :period, :in => 0..72
-
+      = f.number_field :period, :in => 0..72, :value => 12
+      = f.label :user
+      = f.collection_select(:user_id, current_organization.users, :id, :email)
       %br
       = f.submit

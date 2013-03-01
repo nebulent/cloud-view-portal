@@ -1,15 +1,13 @@
 %table.four.columns.centered
   %thead
-    %th{:colspan => 2}
-      %h4 Tokens
-    %th{:colspan => 2}
-      = link_to "Add token", new_organizations_aws_token_path, :class => "secondary button"
+    %th ID
+    %th URL
+    %th Duration
   - @tokens.each do |t|
     %tr
-      %td
-        Token#{t.id}
-      %td
-        =link_to "Edit", edit_organizations_aws_token_path(t), :class => "button small"
+      %td= t.id
+      %td= link_to "open", t.link
+      %td= t.period
       %td
         =link_to "Delete", organizations_aws_token_path(t), :method => :delete, 'data-confirm' => 'Are you sure?', :class => "alert button small"
 
