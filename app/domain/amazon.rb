@@ -1,56 +1,67 @@
-require 'rubygems'
-require 'json'
-require 'open-uri'
-require 'cgi'
-require 'aws-sdk'
-
 class Amazon
+  class << self
+    def create_access_token (organization, username, duration)
+      sts = init_sts(organization)
+      iam = init_iam(organization)
 
-  # Normally, the temporary credentials will come from your identity
-  # broker, but for this example we create them here
+      group = create_or_get_group(iam)
+      create_user_if_needed(iam, group, username)
 
-  sts = AWS::STS.new(:access_key_id => "*** Your AWS Access Key ID ***",
-        :secret_access_key => "*** Your AWS Secret Access Key ***")
+      session = sts.new_federated_session(username,
+                                          :policy => access_policy,
+                                          :duration => duration.hours)
 
-  # A sample policy for accessing Amazon SNS in the console.
-  policy = AWS::STS::Policy.new
-  policy.allow(:actions => "sns:*",:resources => :any)
+      issuer_url = "http://cvp.nebulent.com/"
+      console_url = "https://console.aws.amazon.com/sns"
+      signin_url = "https://signin.aws.amazon.com/federation"
 
-  session = sts.new_federated_session(
-    "UserName",
-    :policy => policy,
-    :duration => 3600)
+      session_json = {
+        :sessionId => session.credentials[:access_key_id],
+        :sessionKey => session.credentials[:secret_access_key],
+        :sessionToken => session.credentials[:session_token]
+      }.to_json
 
-  # The issuer parameter specifies your internal sign-in
-  # page, for example https://mysignin.internal.mycompany.com/.
-  # The console parameter specifies the URL to the destination console of the
-  # AWS Management Console. This example goes to the Amazon SNS console.
-  # The signin parameter is the URL to send the request to.
+      get_signin_token_url = signin_url + "?Action=getSigninToken" \
+                             + "&SessionType=json&Session=" + CGI.escape(session_json)
 
-  issuer_url = "https://mysignin.internal.mycompany.com/"
-  console_url = "https://console.aws.amazon.com/sns"
-  signin_url = "https://signin.aws.amazon.com/federation"
+      returned_content    = URI.parse(get_signin_token_url).read
+      signin_token        = JSON.parse(returned_content)['SigninToken']
+      signin_token_param  = "&SigninToken=" + CGI.escape(signin_token)
+      issuer_param        = "&Issuer=" + CGI.escape(issuer_url)
+      destination_param   = "&Destination=" + CGI.escape(console_url)
 
-  # Create the sign-in token using temporary credentials,
-  # including the Access Key ID, Secret Access Key, and security token.
-  session_json = {
-    :sessionId => session.credentials[:access_key_id],
-    :sessionKey => session.credentials[:secret_access_key],
-    :sessionToken => session.credentials[:session_token]
-  }.to_json
+      signin_url + "?Action=login" + signin_token_param + issuer_param + destination_param
+    end
 
-  get_signin_token_url = signin_url + "?Action=getSigninToken"
-                         + "&SessionType=json&Session=" + CGI.escape(session_json)
+    private
 
-  returned_content = URI.parse(get_signin_token_url).read
-  signin_token = JSON.parse(returned_content)['SigninToken']
+    def create_user_if_needed (iam, group, username)
+      user = iam.users.find {|u| u.name == username }
+      group_user = group.users.find {|u| u.name == username }
 
-  signin_token_param = "&SigninToken=" + CGI.escape(signin_token)
+      user = iam.users.create(username) unless user
+      group.users.add(user) unless group_user
+    end
 
-  # The issuer parameter is optional, but recommended. Use it to direct users
-  # to your sign-in page when their session expires.
+    def create_or_get_group (iam, name='CloudViewPortal')
+      group = iam.groups.find {|g| g.name == name }
+      group ||= iam.groups.create(name)
+    end
 
-  issuer_param = "&Issuer=" + CGI.escape(issuer_url)
-  destination_param = "&Destination=" + CGI.escape(console_url)
-  login_url = signin_url + "?Action=login" + signin_token_param + issuer_param + destination_param
+    def access_policy
+      policy = AWS::STS::Policy.new
+      policy.allow(:actions => "sns:*",:resources => :any)
+      policy
+    end
+
+    def init_iam (organization)
+      @iam ||= AWS::IAM.new(:access_key_id => organization.aws_key_id,
+                            :secret_access_key => organization.aws_secret_key)
+    end
+
+    def init_sts (organization)
+      @sts ||= AWS::STS.new(:access_key_id => organization.aws_key_id,
+                            :secret_access_key => organization.aws_secret_key)
+    end
+  end
 end
