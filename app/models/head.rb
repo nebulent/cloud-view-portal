@@ -5,9 +5,8 @@ class Head < ActiveRecord::Base
   has_many :organizations
   accepts_nested_attributes_for :organizations
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :organization_attributes
-
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  
   def after_database_authentication
     Event.create :message => "Head with id #{id} has logged in",
                  :entity => "OrganizationSession",

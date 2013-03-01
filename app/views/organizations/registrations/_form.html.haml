@@ -1,8 +1,10 @@
 = render 'validation_errors'
 
-= form_for resource, url: registration_path(resource) do |f|
+= form_for @organization, url: registration_path(@organization) do |f|
   = label_tag :organization_name
-  = text_field_tag 'head[organization_attributes][name]'
+  = text_field_tag 'head[organizations][][name]'
+  = label_tag :subdomain
+  = text_field_tag 'head[organizations][][subdomain]'
   = f.label :email
   = f.text_field :email
   = f.label :password

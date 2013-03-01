@@ -9,10 +9,10 @@
 
 head = Head.new email: 'test@org.com', password: 'qweqwe',
                    password_confirmation: 'qweqwe'
-head.organizations.new name: 'TestOrg'
+head.organizations.new name: 'TestOrg', subdomain: "test"
 head.save!
 
 org = head.organizations.first
 org.users.create email: 'user@org.com', password: 'qweqwe',
-                 password_confirmation: 'qweqwe'
+                 password_confirmation: 'qweqwe', role: :users
 org.save!

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206094036) do
+ActiveRecord::Schema.define(:version => 20130228134736) do
 
   create_table "connections", :force => true do |t|
     t.integer  "terminal_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130206094036) do
   create_table "organizations", :force => true do |t|
     t.integer "head_id"
     t.string  "name"
+    t.string  "subdomain"
   end
 
   create_table "remote_sessions", :force => true do |t|
