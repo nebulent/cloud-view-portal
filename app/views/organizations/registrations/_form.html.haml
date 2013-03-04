@@ -1,8 +1,11 @@
 = render 'validation_errors'
 
+- resource.organizations = [Organization.new] if resource.organizations.empty?
+
 = form_for resource, url: registration_path(resource) do |f|
-  = label_tag :organization_name
-  = text_field_tag 'head[organization_attributes][name]'
+  = f.fields_for :organizations do |org|
+    = org.label :name
+    = org.text_field :name
   = f.label :email
   = f.text_field :email
   = f.label :password
