@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'haml-rails'
-gem 'sqlite3'
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'kendoui-rails'
 gem 'devise'
