@@ -64,6 +64,7 @@
   window._cvp = window._cvp ? window._cvp : {}
   window._cvp.sshRelayHost = "#{@ssh_relay_host}"
   window._cvp.token = "#{@token}"
+
   $('#input_area').bind('textarea', function(e){
     var changeVal = $( e.currentTarget ).val();
     $('.terminal').html( changeVal );
