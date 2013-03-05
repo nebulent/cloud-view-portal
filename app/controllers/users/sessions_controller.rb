@@ -8,6 +8,8 @@ class Users::SessionsController < Devise::SessionsController
     puts "SUBDOMAIN #{request.subdomain}"
     if !request.subdomain.present?
       puts "SUBDOMAIN NOT PRESENT"
+      sign_in User.find_by_email(params[:user][:email])
+      puts "Le user is: #{current_user}"
       subdomain = User.find_by_email(request.params[:user][:email]).organization.subdomain
       return redirect_to root_url.gsub("http://", "http://#{subdomain}.")
     end
