@@ -48,8 +48,10 @@ class EventLogPresenter
   def self.sort (collection, params)
     return collection unless params["sort"]
     field = params["sort"]["0"]["field"].to_sym
-    direction = int(params["sort"]["0"]["dir"])
-    collection.sort(field => direction)
+    direction = params["sort"]["0"]["dir"]
+    p collection
+    p collection.class.name
+    collection.order("#{field} #{direction}")
   end
 
   def self.int (sort)
