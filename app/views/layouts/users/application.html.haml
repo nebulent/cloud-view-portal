@@ -10,7 +10,7 @@
   %body
     .navbar.navbar
       .navbar-inner
-        = link_to "CVP | #{current_organization.name}", "/", 'class' => 'brand'
+        = link_to "CVP | #{current_user.organization.name}", "/", 'class' => 'brand'
         %ul.nav
           %li
             %a{href: users_dashboard_path('index')}
