@@ -27,36 +27,30 @@ class EventLogPresenter
     end
   end
 
-  def self.query_method (operator)
-    @query_methods ||= {
-      "neq" => :ne,
-      "eq" => :where,
-      "startswith" => :starts_with,
-      "contains" => :contains,
-      "doesnotcontain" => :does_not_contain,
-      "endswith" => :ends_with
-    }
-    @query_methods[operator]
+  def self.query_method (key, value, operator)
+    case operator
+    when "neq"            then "#{key} != #{value}"
+    when "eq"             then "#{key} = #{value}"
+    when "startswith"     then "#{key} LIKE '#{value}%'"
+    when "endswith"       then "#{key} LIKE '%#{value}'"
+    when "contains"       then "#{key} LIKE '%#{value}%'"
+    when "doesnotcontain" then "#{key} NOT LIKE '%#{value}%'"
+    end
   end
 
   def self.filter_criteria (data, filter)
-    key = filter["field"].to_sym
-    method = query_method(filter["operator"])
-    data.send(method, {key => filter["value"]})
+    return data unless filter
+
+    query = query_method(filter["field"], filter["value"], filter["operator"]) 
+    puts "filtering: #{query} "
+    data.where query
   end
 
   def self.sort (collection, params)
     return collection unless params["sort"]
     field = params["sort"]["0"]["field"].to_sym
     direction = params["sort"]["0"]["dir"]
-    p collection
-    p collection.class.name
     collection.order("#{field} #{direction}")
-  end
-
-  def self.int (sort)
-    @sort_table ||= {"desc" => -1, "asc" => 1}
-    @sort_table[sort]
   end
 
   def self.page (data, params)
