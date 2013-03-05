@@ -133,19 +133,9 @@ GEM
     mime-types (1.21)
     mocha (0.10.5)
       metaclass (~> 0.0.1)
-    mongoid (3.0.22)
-      activemodel (~> 3.1)
-      moped (~> 1.2)
-      origin (~> 1.0)
-      tzinfo (~> 0.3.22)
-    mongoid-pagination (0.2.0)
-      activesupport
-      mongoid
-    moped (1.4.2)
     multi_json (1.6.0)
     mysql2 (0.3.11)
     nokogiri (1.5.6)
-    origin (1.0.11)
     orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
@@ -236,6 +226,7 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     websocket (1.0.7)
+    will_paginate (3.0.4)
     xpath (1.0.0)
       nokogiri (~> 1.3)
 
@@ -260,8 +251,6 @@ DEPENDENCIES
   headless
   jquery-rails
   kendoui-rails
-  mongoid (~> 3.0.0)
-  mongoid-pagination
   mysql2
   paperclip
   posix-spawn
@@ -275,3 +264,4 @@ DEPENDENCIES
   sys-proctable
   thin
   uglifier (>= 1.0.3)
+  will_paginate (~> 3.0)
