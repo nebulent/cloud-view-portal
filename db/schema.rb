@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301121331) do
+ActiveRecord::Schema.define(:version => 20130305094110) do
 
   create_table "aws_tokens", :force => true do |t|
     t.integer  "period"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(:version => 20130301121331) do
     t.string   "certificate_content_type"
     t.integer  "certificate_file_size"
     t.datetime "certificate_updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "level"
+    t.string   "name"
+    t.string   "entity"
+    t.string   "message"
+    t.string   "user_email"
+    t.integer  "organization_id"
   end
 
   create_table "heads", :force => true do |t|
