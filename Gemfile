@@ -13,9 +13,8 @@ gem 'rest-client'
 gem 'paperclip'
 gem 'cancan'
 
-gem "mongoid", "~> 3.0.0"
-gem "mongoid-pagination"
 gem 'redis'
+gem 'will_paginate', '~> 3.0'
 
 gem 'thin'
 gem 'aws-sdk'
@@ -36,6 +35,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.13.0'
 end
 
