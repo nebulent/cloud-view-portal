@@ -22,8 +22,10 @@ class EventLogPresenter
     if filters.size == 1
       first
     else
-      logic = params["filter"]["logic"].to_sym
-      filter_criteria(first.send(logic), filters["1"])
+      case params["filter"]["logic"]
+      when "and"  then filter_criteria(first, filters["1"])
+      when "or"   then first & filter_criteria(data, filters["1"])
+      end
     end
   end
 
@@ -38,19 +40,15 @@ class EventLogPresenter
     end
   end
 
-  def self.filter_criteria (data, filter)
-    return data unless filter
-
-    query = query_method(filter["field"], filter["value"], filter["operator"]) 
-    puts "filtering: #{query} "
-    data.where query
+  def self.filter_criteria (arel, filter)
+    return arel unless filter
+    query = query_method(filter["field"], filter["value"], filter["operator"])
+    arel.where query
   end
 
-  def self.sort (collection, params)
-    return collection unless params["sort"]
-    field = params["sort"]["0"]["field"].to_sym
-    direction = params["sort"]["0"]["dir"]
-    collection.order("#{field} #{direction}")
+  def self.sort (arel, params)
+    return arel unless params["sort"]
+    arel.order("#{params["sort"]["0"]["field"]} #{params["sort"]["0"]["dir"]}")
   end
 
   def self.page (data, params)
