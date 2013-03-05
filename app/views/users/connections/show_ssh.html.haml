@@ -25,6 +25,9 @@
     %button#PgUp PgUp
     %button#PgDown PgDown
 
+    #input_area
+      %textarea{:id => "text", :type => "text", :class => "input_area"}
+
 :css
   .terminal {
     /*margin: 0 auto;*/
@@ -48,8 +51,20 @@
     background: #f0f0f0;
   }
 
+  .input_area {
+    opacity: 0;
+    cursor: none;
+    width: 570px;
+    height: 346px;
+    position: absolute;
+    z-index: 5;
+  }
+
 :javascript
   window._cvp = window._cvp ? window._cvp : {}
   window._cvp.sshRelayHost = "#{@ssh_relay_host}"
   window._cvp.token = "#{@token}"
-
+  $('#input_area').bind('textarea', function(e){
+    var changeVal = $( e.currentTarget ).val();
+    $('.terminal').html( changeVal );
+  });
