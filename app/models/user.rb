@@ -21,8 +21,4 @@ class User < ActiveRecord::Base
              :name => "login"
   end
 
-  def self.find_for_authentication(conditions={})
-    puts "CONDITIOOOOOOOOOOOOOOOOOOOOOOOOOONS #{conditions.inspect}"
-    super(conditions)
-  end
 end

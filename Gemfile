@@ -12,7 +12,6 @@ gem 'sys-proctable'
 gem 'rest-client'
 gem 'paperclip'
 gem 'cancan'
-gem 'acts_as_tenant'
 
 gem 'redis'
 gem 'will_paginate', '~> 3.0'
