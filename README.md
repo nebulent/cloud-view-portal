@@ -7,7 +7,7 @@ VAM depends on several services to connect to remote machines.
 
 ## SSH
 You have to start the project "cloud-ssh-relay", and note at which port it is listening
-To make VAM aware of this service, you have to pass it's external url as a environment variable: `CVP_SSH_RELAY=http://someurl:8080 rails s`
+To make VAM aware of this service, you have to pass it's external url as a environment variable: `VAM_SSH_RELAY=http://someurl:8080 rails s`
 The SSH relay project is available at https://github.com/nebulent/cvp-ssh-relay
 
 ## VNC

@@ -1,5 +1,5 @@
 class SshEndpoint
-  ENDPOINT_URL = ENV['CVP_SSH_RELAY'] || "http://localhost:8080"
+  ENDPOINT_URL = ENV['VAM_SSH_RELAY'] || "http://localhost:8080"
   TOKEN_PATH   = URI.join(ENDPOINT_URL, "token").to_s
   InvalidConnectionError = Class.new(StandardError)
 
