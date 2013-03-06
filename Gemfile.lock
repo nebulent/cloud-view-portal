@@ -242,7 +242,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   aws-sdk
+=======
+>>>>>>> Refactor all the unnecessary debugging stuff
   better_errors
   binding_of_caller
   bootstrap-sass-rails

@@ -20,10 +20,4 @@ class User < ActiveRecord::Base
              :entity => "UsersSession",
              :name => "login"
   end
-
-  def self.find_for_authentication(conditions={})
-    puts "CONDITIOOOOOOOOOOOOOOOOOOOOOOOOOONS #{conditions.inspect}"
-    conditions[:id] = Organization.find_by_subdomain(conditions.delete(:subdomain)).users.first.id
-    super(conditions)
-  end
 end
