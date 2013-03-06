@@ -12,7 +12,6 @@ gem 'sys-proctable'
 gem 'rest-client'
 gem 'paperclip'
 gem 'cancan'
-gem 'acts_as_tenant'
 
 gem "mongoid", "~> 3.0.0"
 gem "mongoid-pagination"
