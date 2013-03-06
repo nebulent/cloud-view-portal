@@ -1,5 +1,5 @@
-window._cvp ?= {}
-c = _cvp
+window._vam ?= {}
+c = _vam
 
 c.initPoliciesViewer = ($e)->
   $e.kendoGrid({

@@ -43,7 +43,7 @@ class Amazon
       group.users.add(user) unless group_user
     end
 
-    def create_or_get_group (iam, name='CloudViewPortal')
+    def create_or_get_group (iam, name='VAM')
       group = iam.groups.find {|g| g.name == name }
       group ||= iam.groups.create(name)
     end

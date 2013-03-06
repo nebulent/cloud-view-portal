@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Cloudview
+    %title vNOC Access Management
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
@@ -10,7 +10,7 @@
   %body
     .navbar.navbar-inverse
       .navbar-inner
-        = link_to "CVP | #{current_organization.name}", "/", 'class' => 'brand'
+        = link_to "VAM | #{current_organization.name}", "/", 'class' => 'brand'
         %ul.nav
           %li
             %a{href: organizations_dashboard_path('index')}
