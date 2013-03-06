@@ -61,11 +61,15 @@ ActiveRecord::Schema.define(:version => 20130301121331) do
     t.integer "head_id"
     t.string  "name"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.string  "aws_key_id"
     t.string  "aws_secret_key"
 =======
     t.string  "subdomain"
 >>>>>>> The first steps for multitenancy
+=======
+    t.string  "subdomain"
+>>>>>>> d05da63c6c78b11db3b5d4ea35fd04924d03ef9d
   end
 
   create_table "remote_sessions", :force => true do |t|

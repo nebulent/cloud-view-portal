@@ -20,4 +20,5 @@ class User < ActiveRecord::Base
              :entity => "UsersSession",
              :name => "login"
   end
+
 end
