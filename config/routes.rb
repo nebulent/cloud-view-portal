@@ -1,4 +1,4 @@
-Cloudview::Application.routes.draw do
+VAM::Application.routes.draw do
   devise_for :users, only: [:sessions, :passwords], controllers: {
     sessions: 'users/sessions'
   }

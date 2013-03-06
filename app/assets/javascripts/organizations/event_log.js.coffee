@@ -1,5 +1,5 @@
-window._cvp ?= {}
-c = window._cvp
+window._vam ?= {}
+c = window._vam
 
 c.initLogViewer = ($elem)->
   dataUrl = window.location.pathname
