@@ -6,6 +6,8 @@
   = f.fields_for :organizations do |org|
     = org.label :name
     = org.text_field :name
+    = org.label :subdomain
+    = org.text_fieldg :subdomain
   = f.label :email
   = f.text_field :email
   = f.label :password
