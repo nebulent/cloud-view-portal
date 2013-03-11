@@ -21,9 +21,9 @@ class Users::ConnectionsController < Users::ApplicationController
 
   def leave
     @connection = current_user.connections.find(params[:id])
-    terminal = connection.terminal
+    terminal = @connection.terminal
     event.info(:message => "user disconnected from terminal ##{terminal.id}
-                            via connection ##{connection.id}")    
+                            via connection ##{@connection.id}")    
     render :nothing => true
   end
 
