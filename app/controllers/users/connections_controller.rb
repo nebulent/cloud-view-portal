@@ -21,9 +21,13 @@ class Users::ConnectionsController < Users::ApplicationController
   end
 
   def leave
+    connection = current_user.connections.find(params[:id])
+    terminal = connection.terminal    
     puts "========================================="  
     puts params
     puts "========================================="
+    event.info(:message => "user left terminal ##{terminal.id}
+                            via connection ##{connection.id}")    
     render :layout => false
   end
 
