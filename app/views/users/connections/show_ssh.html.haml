@@ -70,6 +70,6 @@
     $('.terminal').html( changeVal );
   });
   $(window).on("beforeunload", function() {
-    $.get("/leave?id=#{current_user.id}", null);
+    $.get("/leave?id="#{current_user.id}", null);
     return "Bye!"
   });
