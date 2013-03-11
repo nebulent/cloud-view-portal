@@ -70,6 +70,6 @@
     $('.terminal').html( changeVal );
   });
   $(window).on("beforeunload", function() {
-    $.get("/leave?id=#{current_user.id}", null);
-    return "Bye!"
+    $.get("/leave?id=#{current_user.connections.find(params[:id])}", null);
+    return "Your connection will be closed."
   });
