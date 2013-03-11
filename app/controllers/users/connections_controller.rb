@@ -24,7 +24,7 @@ class Users::ConnectionsController < Users::ApplicationController
     terminal = connection.terminal
     event.info(:message => "user disconnected from terminal ##{terminal.id}
                             via connection ##{connection.id}")    
-    render :layout => false
+    render :nothing => true
   end
 
 end
