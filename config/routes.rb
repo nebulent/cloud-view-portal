@@ -37,5 +37,6 @@ VAM::Application.routes.draw do
   end
 
   match '/pages/:action', controller: "pages", as: "pages"
+  match '/close_connection' => 'users/connections#leave'
   root to: 'pages', action: 'index'
 end

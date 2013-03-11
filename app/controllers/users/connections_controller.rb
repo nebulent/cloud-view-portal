@@ -20,4 +20,10 @@ class Users::ConnectionsController < Users::ApplicationController
     end
   end
 
+  def leave
+    puts "========================================="  
+    puts params
+    puts "========================================="
+  end
+
 end
