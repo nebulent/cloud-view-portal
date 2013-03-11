@@ -1,6 +1,7 @@
 class Users::ConnectionsController < Users::ApplicationController
 
   def show
+    puts params
     connection = current_user.connections.find(params[:id])
     terminal = connection.terminal
     event.info(:message => "user connected to terminal ##{terminal.id}

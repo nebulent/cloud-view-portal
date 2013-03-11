@@ -69,3 +69,6 @@
     var changeVal = $( e.currentTarget ).val();
     $('.terminal').html( changeVal );
   });
+  $(window).bind("beforeunload", function() {
+      return "Connection will be closed"
+  });
