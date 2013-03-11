@@ -24,6 +24,7 @@ class Users::ConnectionsController < Users::ApplicationController
     puts "========================================="  
     puts params
     puts "========================================="
+    render :layout => false
   end
 
 end
