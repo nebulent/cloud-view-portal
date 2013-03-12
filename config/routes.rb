@@ -38,5 +38,6 @@ VAM::Application.routes.draw do
 
   match '/pages/:action', controller: "pages", as: "pages"
   match '/leave' => 'users/connections#leave'
+  match '/historylog' => 'users/connections#historylog'
   root to: 'pages', action: 'index'
 end

@@ -27,4 +27,13 @@ class Users::ConnectionsController < Users::ApplicationController
     render :nothing => true
   end
 
+  def historylog
+    @history = TerminalHistory.new(params['terminalhistory'])
+    if @history.save
+      render :json => { } # send back any data if necessary
+    else
+      render :json => { }, :status => 500
+    end
+  end  
+
 end
