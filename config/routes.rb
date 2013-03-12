@@ -7,6 +7,13 @@ VAM::Application.routes.draw do
     sessions: 'organizations/sessions'
   }
 
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :organizations
+      resources :users
+    end
+  end
+
   namespace :users do
     resources :connections, only: [:show]
     resources :aws_tokens, only: [:index]
