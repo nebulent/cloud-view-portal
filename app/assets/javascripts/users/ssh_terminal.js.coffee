@@ -1,4 +1,4 @@
-ykeyBinder = (sock)->
+keyBinder = (sock)->
   (container, keycode)->
     $(container).click -> sock.emit 'data', keycode
 
