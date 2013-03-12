@@ -1,4 +1,4 @@
-keyBinder = (sock)->
+ykeyBinder = (sock)->
   (container, keycode)->
     $(container).click -> sock.emit 'data', keycode
 
@@ -48,11 +48,10 @@ $ ->
   termInit = true
   initSSH()
 
+  $("#input_area").bind "textarea", (e) ->
+    changeVal = $(e.currentTarget).val()
+    $(".terminal").html changeVal
 
-$("#input_area").bind "textarea", (e) ->
-  changeVal = $(e.currentTarget).val()
-  $(".terminal").html changeVal
-
-$(window).on "beforeunload", ->
-  $.get "/leave?id=#{@connection.id}", null
-  "Your connection will be closed."
+  $(window).on "beforeunload", ->
+    $.get "/leave?id=#{@connection.id}", null
+    "Your connection will be closed."
