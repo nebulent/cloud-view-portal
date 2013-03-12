@@ -47,3 +47,12 @@ $ ->
   return if termInit
   termInit = true
   initSSH()
+
+
+$("#input_area").bind "textarea", (e) ->
+  changeVal = $(e.currentTarget).val()
+  $(".terminal").html changeVal
+
+$(window).on "beforeunload", ->
+  $.get "/leave?id=#{@connection.id}", null
+  "Your connection will be closed."

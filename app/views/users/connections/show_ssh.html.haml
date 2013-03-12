@@ -65,11 +65,3 @@
   window._vam.sshRelayHost = "#{@ssh_relay_host}"
   window._vam.token = "#{@token}"
 
-  $('#input_area').bind('textarea', function(e){
-    var changeVal = $( e.currentTarget ).val();
-    $('.terminal').html( changeVal );
-  });
-  $(window).on("beforeunload", function() {
-    $.get("/leave?id=#{@connection.id}", null);
-    return "Your connection will be closed."
-  });
