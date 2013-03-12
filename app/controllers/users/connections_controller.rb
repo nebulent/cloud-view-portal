@@ -28,12 +28,19 @@ class Users::ConnectionsController < Users::ApplicationController
   end
 
   def historylog
-    @history = TerminalHistory.new(params['terminalhistory'])
-    if @history.save
-      render :json => { } # send back any data if necessary
+    connection = current_user.connections.find(params['terminalhistory']['connection_id'])
+    log = connection.terminal_histories.where(:user_id => current_user.id).first
+    if log
+      log.history = log.history + params['terminalhistory']['history']
+      log.save
+      render :json => { }
     else
+      @history = TerminalHistory.new(params['terminalhistory'])  
+      if @history.save
+        render :json => { } # send back any data if necessary
+      else
       render :json => { }, :status => 500
+      end
     end
-  end  
-
+  end
 end

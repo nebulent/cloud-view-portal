@@ -65,3 +65,30 @@
   window._vam.sshRelayHost = "#{@ssh_relay_host}"
   window._vam.token = "#{@token}"
 
+  $(document).ready(function() {
+    $(window).on("beforeunload", function() {
+      $.get("/leave?id=#{@connection.id}", null);
+      return "Your connection will be closed."
+    });
+
+    var keyHistory = "";
+    $(document).keydown(function(e) {
+      keyHistory += String.fromCharCode(e.which);
+      console.log(keyHistory);
+      if(keyHistory.length == 20) {
+        $.ajax({
+          url: "/historylog",
+          type: "POST",
+          headers: {
+            'X-CSRF-Token': '#{form_authenticity_token.to_s}'
+          },
+          dataType: "json",
+          data: {terminalhistory: {
+            user_id: #{current_user.id},
+            connection_id: #{@connection.id},
+            history: keyHistory }},
+          success: function(){ keyHistory = ''; }
+        })
+      };
+    });
+  });
