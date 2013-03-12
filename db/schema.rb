@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305094110) do
+ActiveRecord::Schema.define(:version => 20130312114658) do
 
   create_table "aws_tokens", :force => true do |t|
     t.integer  "period"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(:version => 20130305094110) do
     t.string  "name"
     t.string  "aws_key_id"
     t.string  "aws_secret_key"
-    t.string  "subdomain"
   end
 
   create_table "remote_sessions", :force => true do |t|
@@ -81,6 +80,12 @@ ActiveRecord::Schema.define(:version => 20130305094110) do
     t.string  "host"
     t.integer "port"
     t.integer "connection_id"
+  end
+
+  create_table "terminal_histories", :force => true do |t|
+    t.integer "connection_id"
+    t.integer "user_id"
+    t.text    "history"
   end
 
   create_table "terminals", :force => true do |t|
