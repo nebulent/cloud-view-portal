@@ -52,6 +52,6 @@ class EventLogPresenter
   end
 
   def self.page (data, params)
-    data.paginate(:page => params["page"], :limit => params["take"])
+    data.paginate(:page => params["page"], :per_page => params["take"])
   end
 end
