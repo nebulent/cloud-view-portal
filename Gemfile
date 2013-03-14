@@ -16,7 +16,6 @@ gem 'cancan'
 gem 'redis'
 gem 'will_paginate', '~> 3.0'
 
-gem 'thin'
 gem 'aws-sdk'
 
 # Gems used only for assets and not required
