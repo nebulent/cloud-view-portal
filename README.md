@@ -4,14 +4,18 @@ VAM depends on several services to connect to remote machines.
 ## Prerequisites
 - Refresh the package list, and install these packages: 
 _Notes: the list of packages is specific for a Ubuntu machine, and it requires super user privilege._
-    sudo apt-get update
-    sudo apt-get install -y curl zlib1g-dev build-essential openjdk-6-jdk openjdk-6-jre openssl \
-                          libreadline6 libreadline6-dev git-core libssl-dev libyaml-dev \
-                          libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf \
-                          libc6-dev ncurses-dev automake libtool bison subversion git nodejs guacd \
-                          mongodb-server libqt4-dev libqtwebkit-dev redis-server npm libmysqlclient-dev
+```bash
+sudo apt-get update
+sudo apt-get install -y curl zlib1g-dev build-essential openjdk-6-jdk openjdk-6-jre openssl \
+                        libreadline6 libreadline6-dev git-core libssl-dev libyaml-dev \
+                        libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf \
+                        libc6-dev ncurses-dev automake libtool bison subversion git nodejs guacd \
+                        mongodb-server libqt4-dev libqtwebkit-dev redis-server npm libmysqlclient-dev
+```
 - rvm is and easy way to install, manage and work with multiple ruby environments.
-    \curl -L https://get.rvm.io | bash -s stable --ruby
+```bash
+\curl -L https://get.rvm.io | bash -s stable --ruby
+```
 Remember to check the dependencies with 
     rvm requirements
 and install ruby 1.9.3
