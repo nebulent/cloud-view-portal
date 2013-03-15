@@ -122,12 +122,6 @@ The SSH relay project is available at https://github.com/nebulent/cvp-ssh-relay
 
 * * * *
 
-## VNC
-To connect to VNC and RDP machines, VAM uses guacamole. We have implemented a guacamole authentication plugin, which queries available machines from VAM app and lists them in guacamole.
-The guacamole plugin along with instructions how to set up guacamole is available at https://github.com/nebulent/guacamole-auth-plugin
-
-* * * *
-
 ## Sample data
 after running rake db:seed the following logins are available
 
