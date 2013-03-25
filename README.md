@@ -102,7 +102,7 @@ Precompile the assests
 Set the environment variables, and run the app
 
 ```bash
-    nohup RAILS_ENV=production CVP_SSH_RELAY=http://localhost:8080 CVP_GUAC_RELAY=http://localhost:3032 rails s &
+    nohup RAILS_ENV=production VAM_SSH_RELAY=http://localhost:8080 VAM_GUAC_RELAY=http://localhost:3032 rails s &
 ```
 
 DONE!
