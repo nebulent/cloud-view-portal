@@ -12,6 +12,7 @@ gem 'sys-proctable'
 gem 'rest-client'
 gem 'paperclip'
 gem 'cancan'
+gem 'dotenv-rails'
 
 gem 'redis'
 gem 'will_paginate', '~> 3.0'
@@ -44,6 +45,6 @@ group :test do
   gem 'database_cleaner'
   gem "factory_girl_rails", "~> 4.0"
   gem 'headless'
-  gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
+  gem 'capybara-webkit'
   gem 'shoulda'
 end
