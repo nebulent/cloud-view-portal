@@ -17,3 +17,4 @@
 
 #Ingore uploaded stuff
 public/system/
+public/assets/*
