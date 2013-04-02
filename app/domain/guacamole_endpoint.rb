@@ -24,10 +24,6 @@ class GuacamoleEndpoint
     { username: user.email, connections: [connection_data] }
   end
 
-  def self.token
-    @token ||= GuacamoleSession.new
-  end
-
   def self.hash (string)
     Digest::SHA1.hexdigest string
   end
