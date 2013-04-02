@@ -22,8 +22,8 @@ production:
     adapter: mysql2
     database: cvp_production
     encoding: utf8
-    username: root
+    username: nebulent
     password: n3bu13NT
-    host: jira.nebulent.com
+    host: 192.168.0.118
     port: 3306
     pool: 5

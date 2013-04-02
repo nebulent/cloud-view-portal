@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(:version => 20130401140747) do
     t.string  "name"
     t.string  "aws_key_id"
     t.string  "aws_secret_key"
-    t.string  "subdomain"
   end
 
   create_table "remote_sessions", :force => true do |t|
