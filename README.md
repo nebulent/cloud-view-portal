@@ -17,6 +17,26 @@ sudo apt-get install -y curl zlib1g-dev build-essential openjdk-6-jdk openjdk-6-
                         mongodb-server libqt4-dev libqtwebkit-dev redis-server npm libmysqlclient-dev
 ```
 
+*Atention!*
+You need another set of packages in order to have the guacamole relay working:
+
+```
+http://sourceforge.net/projects/guacamole/files/current/binary/ubuntu-12.10-amd64/packages/guacd_0.7.0-2_amd64.deb
+http://sourceforge.net/projects/guacamole/files/current/binary/ubuntu-12.10-amd64/packages/libguac4_0.7.0-1_amd64.deb
+http://sourceforge.net/projects/guacamole/files/current/binary/ubuntu-12.10-amd64/packages/libguac-client-rdp0_0.7.3-1_amd64.deb
+http://sourceforge.net/projects/guacamole/files/current/binary/ubuntu-12.10-amd64/packages/libguac-client-vnc0_0.7.1-1_amd64.deb
+```
+
+Download them with wget, and install them with 
+
+```bash
+sudo dpkg -i <package name>
+or
+sudo dpkg -i *.deb
+```
+Once again, these packages are specific for Ubuntu (take a look on sourceforge to
+find packages for Red Hat, Fedora; or compile them from source)
+
 - rvm is and easy way to install, manage and work with multiple ruby environments.
 
 ```bash
