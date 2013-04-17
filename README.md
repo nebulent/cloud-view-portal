@@ -63,6 +63,13 @@ and install ruby 1.9.3
     git clone https://github.com/nebulent/cvp-tomcat-guacamole
 ```
 
+- Edit these files:
+
+```
+app/domain/amazon.rb
+```
+issuer_url = https://the.new.url.of.the.issuer
+
 - Launching the SSH Relay (at port 8080)
 
 ```bash
