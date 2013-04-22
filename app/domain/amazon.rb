@@ -11,7 +11,7 @@ class Amazon
                                           :policy => access_policy(actions),
                                           :duration => duration.hours)
 
-      issuer_url = "http://cvp.nebulent.com/"
+      issuer_url = "https://vamdemo.vnocportal.com/"
       console_url = "https://console.aws.amazon.com/ec2"
       signin_url = "https://signin.aws.amazon.com/federation"
 

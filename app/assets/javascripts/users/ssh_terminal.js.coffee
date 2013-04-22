@@ -34,7 +34,7 @@ ttyReady = (socket, term)->
 
 initSSH = ->
   term = new Terminal(80,24)
-  socket = io.connect "http://cvp-ssh.nebulent.com"
+  socket = io.connect "54.236.100.156:8080"
   socket.emit 'tty_connect', window._vam.token
   socket.on 'tty_ready', -> ttyReady(socket, term)
   socket.on 'tty_error', (reason)-> alert(reason)
