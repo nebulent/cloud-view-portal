@@ -14,7 +14,7 @@ sudo apt-get install -y curl zlib1g-dev build-essential openjdk-6-jdk openjdk-6-
                         libreadline6 libreadline6-dev git-core libssl-dev libyaml-dev \
                         libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf \
                         libc6-dev ncurses-dev automake libtool bison subversion git nodejs guacd \
-                        mongodb-server libqt4-dev libqtwebkit-dev redis-server npm libmysqlclient-dev
+                        mongodb-server libqt4-dev libqtwebkit-dev npm libmysqlclient-dev
 ```
 
 *Atention!*
@@ -63,6 +63,13 @@ and install ruby 1.9.3
     git clone https://github.com/nebulent/cvp-tomcat-guacamole
 ```
 
+- Edit these files:
+
+```
+app/domain/amazon.rb
+```
+issuer_url = https://the.new.url.of.the.issuer
+
 - Launching the SSH Relay (at port 8080)
 
 ```bash
@@ -71,20 +78,6 @@ and install ruby 1.9.3
     sudo npm install -g coffee-script
     nohup coffee server.coffee &
     cd ..
-```
-
-- Configure Redis
-
-Append at the end of /etc/redis/redis.conf
-
-```bash
-    requirepass "password" 
-```
-
-without quotes and restart the server
-
-```bash
-    sudo service redis-server restart
 ```
 
 - Launching the Guacamole Relay, with tomcat
