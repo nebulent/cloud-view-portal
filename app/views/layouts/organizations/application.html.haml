@@ -41,7 +41,7 @@
             %a.org_select
               - opts = {:name => 'organization_id'}
               = form_tag switch_organization_organizations_head_path do
-                = collection_select_tag(current_head.organizations, current_organization.id, opts)
+                = collection_select_tag(current_head.organizations.reject{|o| o.id == nil}, current_organization.id, opts)
           %li
             %a
               %i.icon-off.icon-white
