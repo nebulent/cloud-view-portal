@@ -3,9 +3,11 @@
 = form_for @organization, url: url do |f|
   = f.label :name
   = f.text_field :name
-  = f.label 'Amazaon Key ID'
+  = f.label 'Amazon Key ID*'
   = f.text_field :aws_key_id
-  = f.label 'Amazon Secret Key'
+  = f.label 'Amazon Secret Key*'
   = f.password_field :aws_secret_key
   %br
-  = f.submit controller.action_name.humanize, 'class' => 'btn btn-primary'
+  = f.submit "Create", 'class' => 'btn btn-primary'
+%p 
+  * - the fields are optional
