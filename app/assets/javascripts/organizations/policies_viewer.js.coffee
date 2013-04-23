@@ -12,6 +12,7 @@ c.initPoliciesViewer = ($e)->
     columns: [
       "User",
       "Terminal",
+      "TerminalName"
       "Protocol",
       "ConnectionUsername",
       "Port",

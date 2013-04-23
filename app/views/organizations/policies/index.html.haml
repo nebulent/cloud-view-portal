@@ -7,6 +7,7 @@
     %tr
       %th User
       %th Terminal
+      %th Terminal name
       %th Protocol
       %th Connection Username
       %th Port
@@ -17,6 +18,7 @@
         %tr
           %td= user.email
           %td= conn.terminal.uri
+          %td= conn.terminal.name
           %td= conn.protocol
           %td= conn.user
           %td= conn.port
