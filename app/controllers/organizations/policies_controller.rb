@@ -14,7 +14,9 @@ class Organizations::PoliciesController < Organizations::ApplicationController
     connection = terminal.connections.find(params[:connection])
     user = current_organization.users.find(params[:user])
 
-    if terminal and connection and user
+    if user.connections.include?(connection)
+      flash[:error] = 'Policy already exists'
+    elsif terminal and connection and user and
       user.connections << connection
       event.info(:message => "User #{user.email} is authorized to connect
                               to terminal #{terminal.id}
