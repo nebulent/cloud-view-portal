@@ -14,6 +14,10 @@ class Connection < ActiveRecord::Base
     certificate.exists?
   end
 
+  def authentication_type
+    has_certificate? ? "by key" : "by password"
+  end
+
   def as_json(options={})
     super(options.merge(methods: [:host]))
   end

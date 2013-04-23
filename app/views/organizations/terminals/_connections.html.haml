@@ -7,6 +7,7 @@
         %th Username
         %th Port
         %th Protocol
+        %th Authentication
         %th
     %tbody
       - @terminal.connections.each do |connection|
@@ -14,6 +15,7 @@
           %td= connection.user
           %td= connection.port
           %td= connection.protocol
+          %td= connection.authentication_type
           %td
             .inline
               = link_button 'Edit', edit_organizations_terminal_connection_path(@terminal, connection)
