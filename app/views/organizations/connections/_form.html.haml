@@ -12,6 +12,7 @@
   #file
     = f.label :certificate
     = f.file_field :certificate
+  %p Existing Certificate: #{@connection.certificate_file_name || "no certificate"}
   %br
   = f.submit submit_button, 'class' => 'btn btn-primary'
 
