@@ -1,5 +1,5 @@
 .row
-  .span6
+  .span4
     .widget
       .widget-header
         %h3 Users
@@ -17,7 +17,7 @@
                 %td= user.email
                 %td= user.connections.count
 
-  .span6
+  .span8
     .widget
       .widget-header
         %h3 Terminals
@@ -28,12 +28,13 @@
           %thead
             %tr
               %th name
-              %th
+              %th URI
               %th
           %tbody
             - current_organization.terminals.each do |t|
               %tr
-                %td= link_to t.name, organizations_terminal_path(t)
+                %td #{t.name}
+                %td= link_to organizations_terminal_path(t), organizations_terminal_path(t)
                 %td #{t.connections.count} connection(s)
                 %td
                   .inline= link_button 'Edit', edit_organizations_terminal_path(t)
