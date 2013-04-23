@@ -34,7 +34,7 @@
             - current_organization.terminals.each do |t|
               %tr
                 %td #{t.name}
-                %td= link_to organizations_terminal_path(t), organizations_terminal_path(t)
+                %td= link_to t.uri, organizations_terminal_path(t)
                 %td #{t.connections.count} connection(s)
                 %td
                   .inline= link_button 'Edit', edit_organizations_terminal_path(t)
